@@ -1,71 +1,70 @@
 ---
-import '../styles/global.css'
-import { Image } from "astro:assets"
-import logo from "../image/moe_corp.png"
+import "@fontsource/space-mono";
+import "@fontsource-variable/geist";
+
+import { Image } from "astro:assets";
+import Isotipo from "../assets/brand/Isotipo.svg";
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 ---
-<!DOCTYPE html>
-<html lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-		<title>MoeCorp - Innovando con Tecnología Moe</title>
-	</head>
-	<body class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen font-sans">
 
-		<!-- Header -->
-		<header class="bg-white shadow-lg">
-			<div class="container mx-auto px-6 py-4 flex justify-between items-center">
-				<h1 class="text-3xl font-bold text-gray-800">Moe<span class="text-gray-600">Corp</span></h1>
-				<nav>
-					<ul class="flex space-x-6 text-gray-700">
-						<li><a href="#about" class="hover:text-gray-900 transition-colors">Sobre Nosotros</a></li>
-						<li><a href="#products" class="hover:text-gray-900 transition-colors">Productos</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+<Layout>
+  <!-- Hero Section -->
+  <section class="container mx-auto px-6 py-20 text-center">
+    <h1 class="text-5xl font-bold text-gray-800 mb-4">Bienvenido a MoeCorp.</h1>
+    <p class="text-xl text-gray-700 mb-8 leading-relaxed w-2/3 mx-auto">
+      Desarrollamos un ecosistema de productos moe para facilitar tu vida
+      diaria. Desde seguridad hasta finanzas, estamos aquí para ayudarte. <strong
+        >UwU</strong
+      >
+    </p>
+    <a
+      href="#products"
+      class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-900 transition-colors"
+      >Descubre Nuestros Productos</a
+    >
+  </section>
 
-		<!-- Hero Section -->
-		<section class="container mx-auto px-6 py-20 text-center">
-			<h2 class="text-5xl font-bold text-gray-800 mb-4">Bienvenido a MoeCorp</h2>
-			<p class="text-xl text-gray-700 mb-8">Desarrollamos un ecosistema de productos moe para facilitar tu vida diaria. Desde seguridad hasta finanzas, estamos aquí para ayudarte. UwU</p>
-			<a href="#products" class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-900 transition-colors">Descubre Nuestros Productos</a>
-		</section>
+  <!-- About Section -->
+  <section
+    id="about"
+    class="w-[90%] mx-auto px-6 py-20 bg-white shadow-lg rounded-lg my-10 flex flex-col md:flex-row items-center justify-center"
+  >
+    <Image
+      class="image mb-6 md:mb-0 md:mr-10"
+      src={Isotipo}
+      alt={"MoeCorp"}
+      width={200}
+    />
+    <div>
+      <h1 class="text-3xl font-bold text-gray-800 mb-4">¿Quiénes Somos?</h1>
+      <p class="text-gray-700 leading-relaxed w-2/3">
+        En MoeCorp, combinamos tecnología innovadora con un enfoque kawaii para
+        crear soluciones prácticas y divertidas. Nuestro objetivo es mejorar tu
+        vida diaria con productos que son tan funcionales como adorables. <strong
+          >OwO</strong
+        >
+      </p>
+    </div>
+  </section>
 
-		<!-- About Section -->
-		<section id="about" class="container mx-auto px-6 py-20 bg-white shadow-lg rounded-lg my-10">
-			<div class="flex flex-col md:flex-row items-center">
-				<Image class="image" src={logo} alt={"MoeCorp"} class="rounded-lg mb-6 md:mb-0 md:mr-10"/>
-				<div>
-					<h3 class="text-3xl font-bold text-gray-800 mb-4">¿Quiénes Somos?</h3>
-					<p class="text-gray-700 leading-relaxed">En MoeCorp, combinamos tecnología innovadora con un enfoque kawaii para crear soluciones prácticas y divertidas. Nuestro objetivo es mejorar tu vida diaria con productos que son tan funcionales como adorables. OwO</p>
-				</div>
-			</div>
-		</section>
+  <!-- Products Section -->
+  <section id="products" class="w-[90%] mx-auto px-6 py-20">
+    <h3 class="text-4xl font-bold text-center text-gray-800 mb-10">
+      Nuestros Productos
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- MoeCrypt -->
 
-		<!-- Products Section -->
-		<section id="products" class="container mx-auto px-6 py-20">
-			<h3 class="text-4xl font-bold text-center text-gray-800 mb-10">Nuestros Productos</h3>
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-				<!-- MoeCrypt -->
-				<div class="bg-white shadow-lg rounded-lg p-6 text-center">
-					<h4 class="text-2xl font-bold text-gray-800 mb-4">MoeCrypt</h4>
-					<p class="text-gray-700">Una herramienta completa y fácil de usar para cifrar y descifrar archivos. Protege tus datos importantes con tecnología confiable y un diseño moe. UwU</p>
-				</div>
-				<!-- MoeFinans -->
-				<div class="bg-white shadow-lg rounded-lg p-6 text-center">
-					<h4 class="text-2xl font-bold text-gray-800 mb-4">MoeFinans</h4>
-					<p class="text-gray-700">Una aplicación multiplataforma para gestionar tus gastos en moneda local, internacional o criptomonedas. Simplifica tus finanzas con estilo moe. OwO</p>
-				</div>
-			</div>
-		</section>
-
-		<!-- Footer -->
-		<footer class="bg-gray-800 text-white py-6 mt-10">
-			<div class="container mx-auto px-6 text-center">
-				<p>&copy; 2023 MoeCorp. Todos los derechos reservados. Hecho con amor y café. UwU</p>
-			</div>
-		</footer>
-	</body>
-</html>
+      <Card
+        Title="MoeCrypt"
+        Body="Una herramienta completa y fácil de usar para cifrar y descifrar archivos. Protege tus datos importantes con tecnología confiable y un diseño moe. UwU"
+      />
+      <!-- MoeFinans -->
+      <Card
+        Title="MoeFinans"
+        Body="Una aplicación multiplataforma para gestionar tus gastos en moneda local, internacional o criptomonedas. Simplifica tus finanzas con estilo moe. OwO"
+      />
+    </div>
+  </section>
+</Layout>
