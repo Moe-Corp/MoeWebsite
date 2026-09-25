@@ -1,0 +1,379 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+---
+
+<Layout title="MoeLog Documentation" description="Five minutes: install the SDK, start the sidecar, kill your app on purpose, and watch the alert arrive.">
+  <Header currentPath="docs" />
+  <main class="w-full pt-24 bg-surface min-h-[calc(100vh-6rem)]">
+    <div class="max-w-[1200px] mx-auto px-margin lg:px-gutter-desktop py-space-xl">
+      <div class="flex flex-col w-full">
+        <!-- Slim Docs Search Field -->
+        <div class="w-full pb-space-lg">
+          <div class="relative w-full max-w-[680px] ml-0 lg:ml-[264px]">
+            <div class="flex items-center justify-between w-full h-8 px-space-sm bg-surface-container-lowest rounded-[2px] shadow-sm">
+              <div class="flex items-center gap-space-xs text-secondary">
+                <span class="material-symbols-outlined text-[16px]">search</span>
+                <input class="bg-transparent text-on-surface font-body-md text-body-md placeholder:text-secondary focus:outline-none w-64" placeholder="Search the docs" type="text" />
+              </div>
+              <div class="flex items-center">
+                <span class="font-label-sm text-label-sm text-secondary bg-surface-container-high px-1.5 py-0.5 rounded-[2px] uppercase">⌘K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Primary 3-Column Documentation Frame -->
+        <div class="w-full grid grid-cols-1 lg:grid-cols-[240px_1fr] xl:grid-cols-[240px_680px_200px] gap-space-lg items-start">
+          <!-- LEFT COLUMN: Sticky Navigation Sidebar -->
+          <aside class="w-full lg:w-[240px] sticky top-24 pr-space-md hidden lg:flex flex-col gap-space-md">
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md text-secondary tracking-[0.12em] uppercase mb-space-xs">GETTING STARTED</span>
+              <div class="flex flex-col">
+                <a class="relative flex items-center h-8 pl-space-sm pr-space-xs font-headline-sm text-headline-sm text-on-surface bg-surface-container-low rounded-r-[2px]" href="/docs">
+                  <span class="absolute left-0 top-0 bottom-0 w-[3px] bg-primary-container"></span>
+                  Quickstart
+                </a>
+                <a class="flex items-center h-8 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Concepts</a>
+                <a class="flex items-center h-8 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Your first alert</a>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md text-secondary tracking-[0.12em] uppercase mb-space-xs">SDK</span>
+              <div class="flex flex-col">
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Node</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Bun</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Deno</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Browser</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Edge</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">React</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Next.js</a>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md text-secondary tracking-[0.12em] uppercase mb-space-xs">SIDECAR</span>
+              <div class="flex flex-col">
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">How it works</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Configuration</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">The seven failure modes</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">CLI</a>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md text-secondary tracking-[0.12em] uppercase mb-space-xs">SERVER</span>
+              <div class="flex flex-col">
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Self-hosting</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Ingest keys</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Retention</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Alert channels</a>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-md text-label-md text-secondary tracking-[0.12em] uppercase mb-space-xs">PROTOCOL</span>
+              <div class="flex flex-col">
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">MLWP v1</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Envelope</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Fingerprints</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Conformance suite</a>
+              </div>
+            </div>
+            <div class="flex flex-col pb-space-xl">
+              <span class="font-label-md text-label-md text-secondary tracking-[0.12em] uppercase mb-space-xs">REFERENCE</span>
+              <div class="flex flex-col">
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">API</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Configuration options</a>
+                <a class="flex items-center h-7 pl-space-sm pr-space-xs font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#">Changelog</a>
+              </div>
+            </div>
+          </aside>
+
+          <!-- CENTRE COLUMN: Article -->
+          <article class="w-full max-w-[680px] flex flex-col gap-space-lg">
+            <div class="flex flex-col gap-space-xs">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-space-xs font-code-md text-code-md text-secondary">
+                  <span>Docs</span><span>/</span><span>Getting started</span><span>/</span><span class="text-on-surface">Quickstart</span>
+                </div>
+                <div class="flex items-center gap-1.5 bg-primary-container px-2 py-0.5 rounded-full text-on-primary-fixed shadow-sm">
+                  <span class="font-label-sm text-label-sm font-bold">印</span>
+                  <span class="font-label-sm text-label-sm tracking-tight font-bold">v0.0.2-alpha</span>
+                </div>
+              </div>
+              <div class="flex items-baseline justify-between pt-space-xs">
+                <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight" id="quickstart">Quickstart</h1>
+                <span class="font-label-md text-label-md text-secondary uppercase tracking-widest hidden sm:inline">仕様 · SPECIFICATION</span>
+              </div>
+              <p class="font-body-lg text-body-lg text-on-surface pt-space-xs">
+                Five minutes: install the SDK, start the sidecar, kill your app on purpose, and watch the alert arrive.
+              </p>
+            </div>
+
+            <!-- Warning Callout -->
+            <div class="relative w-full p-space-md bg-surface-container-high rounded-[4px] shadow-sm">
+              <div class="absolute left-0 top-0 bottom-0 w-1 bg-on-primary-container"></div>
+              <div class="flex flex-col gap-1 pl-space-xs">
+                <span class="font-label-sm text-label-sm font-bold text-on-primary-container tracking-wider uppercase">HEADS UP</span>
+                <p class="font-body-md text-body-md text-on-surface">
+                  MLWP v1 is not frozen. Between alpha releases, the wire format can change and your stored events may need a re-ingest.
+                </p>
+              </div>
+            </div>
+
+            <!-- STEP 1: Install -->
+            <section class="flex flex-col gap-space-sm pt-space-xs" id="step-install">
+              <h2 class="font-headline-lg text-headline-lg text-on-surface">1. Install</h2>
+              <div class="flex flex-col w-full bg-inverse-surface rounded-[2px] shadow-md overflow-hidden text-inverse-on-surface">
+                <div class="flex items-center justify-between px-space-md h-9 bg-inverse-surface">
+                  <div class="flex items-center gap-space-sm" id="install-tabs">
+                    <button class="tab-btn font-label-md text-label-md uppercase font-bold text-primary-container" data-target="node" type="button">node</button>
+                    <button class="tab-btn font-label-md text-label-md uppercase text-secondary-fixed-dim hover:text-inverse-on-surface" data-target="bun" type="button">bun</button>
+                    <button class="tab-btn font-label-md text-label-md uppercase text-secondary-fixed-dim hover:text-inverse-on-surface" data-target="deno" type="button">deno</button>
+                  </div>
+                  <button class="flex items-center gap-1 text-secondary-fixed-dim hover:text-primary-container transition-colors" id="copy-install-btn" title="Copy to clipboard" type="button">
+                    <span class="material-symbols-outlined text-[15px]">content_copy</span>
+                    <span class="font-label-sm text-label-sm uppercase">copy</span>
+                  </button>
+                </div>
+                <div class="p-space-md font-code-md text-code-md text-inverse-on-surface overflow-x-auto select-all" id="install-snippet">
+                  npm i @moecorp/moelog-node @moecorp/moelog-sidecar
+                </div>
+              </div>
+            </section>
+
+            <!-- STEP 2: Initialise -->
+            <section class="flex flex-col gap-space-sm pt-space-xs" id="step-initialise">
+              <h2 class="font-headline-lg text-headline-lg text-on-surface">2. Initialise</h2>
+              <div class="flex flex-col w-full bg-inverse-surface rounded-[2px] shadow-md overflow-hidden text-inverse-on-surface">
+                <div class="flex items-center justify-between px-space-md h-9 bg-inverse-surface">
+                  <span class="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-wider">app.ts</span>
+                  <button class="flex items-center gap-1 text-secondary-fixed-dim hover:text-primary-container transition-colors" id="copy-init-btn" type="button">
+                    <span class="material-symbols-outlined text-[15px]">content_copy</span>
+                    <span class="font-label-sm text-label-sm uppercase">copy</span>
+                  </button>
+                </div>
+                <pre class="p-space-md font-code-md text-code-md text-inverse-on-surface overflow-x-auto leading-relaxed"><code><span class="text-secondary-fixed-dim">import</span> {"{"} init {"}"} <span class="text-secondary-fixed-dim">from</span> <span class="text-tertiary-container">'@moecorp/moelog-node'</span>;
+
+init({"{"}
+  app: <span class="text-tertiary-container">'checkout-api'</span>,
+  release: <span class="text-tertiary-container">'1.4.2'</span>,
+  environment: process.env.NODE_ENV ?? <span class="text-tertiary-container">'production'</span>,
+  sidecar: {"{"}
+    socketPath: <span class="text-tertiary-container">'/var/run/moelog.sock'</span>,
+  {"}"},
+{"}"});</code></pre>
+              </div>
+            </section>
+
+            <!-- STEP 3: Start the sidecar -->
+            <section class="flex flex-col gap-space-sm pt-space-xs" id="step-sidecar">
+              <h2 class="font-headline-lg text-headline-lg text-on-surface">3. Start the sidecar</h2>
+              <div class="flex flex-col w-full bg-inverse-surface rounded-[2px] shadow-md overflow-hidden text-inverse-on-surface">
+                <div class="flex items-center justify-between px-space-md h-9 bg-inverse-surface">
+                  <span class="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-wider">terminal</span>
+                  <button class="flex items-center gap-1 text-secondary-fixed-dim hover:text-primary-container transition-colors" id="copy-sidecar-btn" type="button">
+                    <span class="material-symbols-outlined text-[15px]">content_copy</span>
+                    <span class="font-label-sm text-label-sm uppercase">copy</span>
+                  </button>
+                </div>
+                <div class="p-space-md font-code-md text-code-md text-inverse-on-surface overflow-x-auto select-all">npx moelog-sidecar --daemon</div>
+              </div>
+              <p class="font-body-md text-body-md text-secondary">It launches detached, and it shuts itself down 120 seconds after the last client disconnects.</p>
+            </section>
+
+            <!-- STEP 4: Kill it on purpose -->
+            <section class="flex flex-col gap-space-sm pt-space-xs" id="step-kill">
+              <h2 class="font-headline-lg text-headline-lg text-on-surface">4. Kill it on purpose</h2>
+              <div class="flex flex-col w-full bg-inverse-surface rounded-[2px] shadow-md overflow-hidden text-inverse-on-surface">
+                <div class="flex items-center justify-between px-space-md h-9 bg-inverse-surface">
+                  <span class="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-wider">simulate crash</span>
+                  <button class="flex items-center gap-1 text-secondary-fixed-dim hover:text-primary-container transition-colors" id="copy-kill-btn" type="button">
+                    <span class="material-symbols-outlined text-[15px]">content_copy</span>
+                    <span class="font-label-sm text-label-sm uppercase">copy</span>
+                  </button>
+                </div>
+                <div class="p-space-md font-code-md text-code-md text-inverse-on-surface overflow-x-auto select-all">kill -9 $(pgrep -f my-app)</div>
+              </div>
+              <div class="w-full bg-surface-container-lowest rounded-[4px] shadow-sm overflow-hidden mt-space-xs">
+                <div class="p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+                  <div class="flex items-center gap-space-sm flex-wrap">
+                    <span class="inline-flex items-center gap-1 bg-inverse-surface text-primary-container px-2 py-0.5 rounded-full font-label-sm text-label-sm font-bold uppercase">
+                      <span class="font-bold">死</span><span>app.crashed</span><span class="text-secondary-fixed-dim">/</span><span>severe</span>
+                    </span>
+                    <span class="font-headline-sm text-headline-sm text-on-surface">checkout-api (SIGKILL)</span>
+                  </div>
+                  <div class="flex items-center gap-space-md font-code-md text-code-md text-secondary">
+                    <span class="text-on-surface font-bold">FP: 7a9e14c0</span>
+                    <span>1s ago</span>
+                  </div>
+                </div>
+              </div>
+              <p class="font-body-md text-body-md text-secondary">What you should see, about a second later.</p>
+            </section>
+
+            <!-- Vocabulary definition table -->
+            <section class="flex flex-col gap-space-sm pt-space-md" id="vocabulary">
+              <div class="flex items-center justify-between pb-space-xs">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface">Vocabulary</h2>
+                <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">GLOSSARY_INDEX</span>
+              </div>
+              <div class="w-full bg-surface-container-lowest rounded-[4px] shadow-sm overflow-hidden">
+                <div class="grid grid-cols-[160px_1fr] bg-surface-container-high px-space-md py-space-xs font-label-md text-label-md uppercase text-secondary">
+                  <span>Term</span><span>Definition</span>
+                </div>
+                <div class="divide-y-0">
+                  <div class="grid grid-cols-[160px_1fr] px-space-md py-space-sm hover:bg-primary-container/10 transition-colors">
+                    <span class="font-headline-sm text-headline-sm text-on-surface">event</span>
+                    <span class="font-body-md text-body-md text-on-surface">An immutable record emitted by your app or the sidecar.</span>
+                  </div>
+                  <div class="grid grid-cols-[160px_1fr] px-space-md py-space-sm hover:bg-primary-container/10 transition-colors bg-surface-container-low/40">
+                    <span class="font-headline-sm text-headline-sm text-on-surface">issue</span>
+                    <span class="font-body-md text-body-md text-on-surface">A grouping of events sharing the same fingerprint.</span>
+                  </div>
+                  <div class="grid grid-cols-[160px_1fr] px-space-md py-space-sm hover:bg-primary-container/10 transition-colors">
+                    <span class="font-headline-sm text-headline-sm text-on-surface">fingerprint</span>
+                    <span class="font-body-md text-body-md text-on-surface">A deterministic 8-character hex hash classifying the crash.</span>
+                  </div>
+                  <div class="grid grid-cols-[160px_1fr] px-space-md py-space-sm hover:bg-primary-container/10 transition-colors bg-surface-container-low/40">
+                    <span class="font-headline-sm text-headline-sm text-on-surface">alert</span>
+                    <span class="font-body-md text-body-md text-on-surface">A notification pushed when a critical state transition occurs.</span>
+                  </div>
+                  <div class="grid grid-cols-[160px_1fr] px-space-md py-space-sm hover:bg-primary-container/10 transition-colors">
+                    <span class="font-headline-sm text-headline-sm text-on-surface">app</span>
+                    <span class="font-body-md text-body-md text-on-surface">The logical application identifier declared during initialization.</span>
+                  </div>
+                  <div class="grid grid-cols-[160px_1fr] px-space-md py-space-sm hover:bg-primary-container/10 transition-colors bg-surface-container-low/40">
+                    <span class="font-headline-sm text-headline-sm text-on-surface">release</span>
+                    <span class="font-body-md text-body-md text-on-surface">Semantic version or git SHA identifying the deployment.</span>
+                  </div>
+                  <div class="grid grid-cols-[160px_1fr] px-space-md py-space-sm hover:bg-primary-container/10 transition-colors">
+                    <span class="font-headline-sm text-headline-sm text-on-surface">sidecar</span>
+                    <span class="font-body-md text-body-md text-on-surface">The detached out-of-process daemon watching your application.</span>
+                  </div>
+                  <div class="grid grid-cols-[160px_1fr] px-space-md py-space-sm hover:bg-primary-container/10 transition-colors bg-surface-container-low/40">
+                    <span class="font-headline-sm text-headline-sm text-on-surface">heartbeat</span>
+                    <span class="font-body-md text-body-md text-on-surface">Periodic pulse sent over the unix socket to prove liveness.</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Prev / Next Cards & Metadata Footer -->
+            <div class="flex flex-col gap-space-lg pt-space-lg">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                <a class="flex flex-col p-space-md bg-surface-container-lowest rounded-[4px] shadow-sm hover:bg-surface-container-low transition-colors group" href="#">
+                  <span class="font-label-sm text-label-sm text-secondary uppercase">Previous</span>
+                  <span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">← Concepts</span>
+                </a>
+                <a class="flex flex-col p-space-md bg-surface-container-lowest rounded-[4px] shadow-sm hover:bg-surface-container-low transition-colors text-left sm:text-right group" href="#">
+                  <span class="font-label-sm text-label-sm text-secondary uppercase">Next</span>
+                  <span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Your first alert →</span>
+                </a>
+              </div>
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm font-code-md text-code-md text-secondary pt-space-xs">
+                <span>Last updated 2 days ago</span>
+                <a class="hover:text-on-surface transition-colors flex items-center gap-1" href="#">
+                  <span class="material-symbols-outlined text-[14px]">edit</span>
+                  <span>Edit this page on GitHub</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- RIGHT COLUMN: Sticky 'ON THIS PAGE' -->
+          <aside class="w-[200px] sticky top-24 pl-space-md hidden xl:flex flex-col gap-space-sm">
+            <span class="font-label-md text-label-md text-secondary tracking-[0.12em] uppercase">ON THIS PAGE</span>
+            <nav class="flex flex-col" id="toc-nav">
+              <a class="toc-link relative flex items-center h-7 pl-space-sm font-body-md text-body-md text-on-surface font-bold" href="#quickstart">
+                <span class="absolute left-0 top-1 bottom-1 w-[2px] bg-primary-container"></span>
+                Quickstart
+              </a>
+              <a class="toc-link relative flex items-center h-7 pl-space-sm font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#step-install">1. Install</a>
+              <a class="toc-link relative flex items-center h-7 pl-space-sm font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#step-initialise">2. Initialise</a>
+              <a class="toc-link relative flex items-center h-7 pl-space-sm font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#step-sidecar">3. Start the sidecar</a>
+              <a class="toc-link relative flex items-center h-7 pl-space-sm font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#step-kill">4. Kill it on purpose</a>
+              <a class="toc-link relative flex items-center h-7 pl-space-sm font-body-md text-body-md text-secondary hover:text-on-surface transition-colors" href="#vocabulary">Vocabulary</a>
+            </nav>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Docs page keeps its own distinct footer (JIS/telemetry styled), not the shared brand Footer -->
+  <footer class="w-full bg-inverse-surface text-inverse-on-surface border-t-2 border-inverse-surface mt-space-xl">
+    <div class="max-w-[1200px] mx-auto px-margin lg:px-gutter-desktop py-space-xl">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg pb-space-lg border-b border-outline/30">
+        <div class="flex items-center gap-space-sm">
+          <span class="font-headline-md text-headline-md tracking-tight uppercase text-inverse-on-surface">MoeLog</span>
+          <span class="font-label-sm text-label-sm text-primary-container border border-primary-container px-1 py-0.5">生 LIVE TELEMETRY</span>
+          <span class="font-label-md text-label-md text-secondary-fixed-dim">/ SPEC MLWP-01</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-space-lg font-code-md text-code-md text-secondary-fixed-dim">
+          <a class="hover:text-primary-container transition-colors" href="#">ARCH</a>
+          <a class="hover:text-primary-container transition-colors" href="#">TELEMETRY</a>
+          <a class="hover:text-primary-container transition-colors" href="#">HANKO-VERIFY</a>
+          <a class="hover:text-primary-container transition-colors" href="#">RELEASES</a>
+          <a class="hover:text-primary-container transition-colors" href="#">SYSTEM STATS</a>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md pt-space-lg font-code-md text-code-md text-secondary-fixed-dim">
+        <p>© 2025 Moe Corp. Japanese Industrial Telemetry &amp; Editorial Standards.</p>
+        <div class="flex items-center gap-space-md">
+          <span class="text-secondary-fixed-dim">JIS-Z8301 COMPLIANT</span>
+          <span class="h-3 w-px bg-outline/40"></span>
+          <span class="text-primary-container font-headline-sm text-headline-sm">印 済</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<script is:inline>
+  const installSnippets = {
+    node: "npm i @moecorp/moelog-node @moecorp/moelog-sidecar",
+    bun: "bun add @moecorp/moelog-node @moecorp/moelog-sidecar",
+    deno: "deno add npm:@moecorp/moelog-node npm:@moecorp/moelog-sidecar"
+  };
+
+  const snippetEl = document.getElementById("install-snippet");
+  const tabButtons = document.querySelectorAll(".tab-btn");
+
+  tabButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      tabButtons.forEach((b) => {
+        b.classList.remove("text-primary-container", "font-bold");
+        b.classList.add("text-secondary-fixed-dim");
+      });
+      btn.classList.remove("text-secondary-fixed-dim");
+      btn.classList.add("text-primary-container", "font-bold");
+      const target = btn.getAttribute("data-target");
+      if (snippetEl && installSnippets[target]) {
+        snippetEl.textContent = installSnippets[target];
+      }
+    });
+  });
+
+  const attachCopy = (id, textExtractor) => {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    btn.addEventListener("click", () => {
+      const text = textExtractor();
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.innerHTML;
+        btn.innerHTML = `<span class="material-symbols-outlined text-[15px]">check</span><span class="font-label-sm text-label-sm uppercase text-primary-container">COPIED</span>`;
+        setTimeout(() => {
+          btn.innerHTML = original;
+        }, 1800);
+      });
+    });
+  };
+
+  attachCopy("copy-install-btn", () => (snippetEl ? snippetEl.innerText.trim() : ""));
+  attachCopy(
+    "copy-init-btn",
+    () =>
+      `import { init } from '@moecorp/moelog-node';\n\ninit({\n  app: 'checkout-api',\n  release: '1.4.2',\n  environment: process.env.NODE_ENV ?? 'production',\n  sidecar: {\n    socketPath: '/var/run/moelog.sock',\n  },\n});`
+  );
+  attachCopy("copy-sidecar-btn", () => "npx moelog-sidecar --daemon");
+  attachCopy("copy-kill-btn", () => "kill -9 $(pgrep -f my-app)");
+</script>

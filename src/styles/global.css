@@ -1,1 +1,194 @@
 @import "tailwindcss";
+
+@theme {
+  /* Colors — Technical Editorial Observability design system */
+  --color-tertiary: #006878;
+  --color-on-secondary-fixed: #1e1b1a;
+  --color-error: #ba1a1a;
+  --color-outline-variant: #cdc7aa;
+  --color-background: #f9f9f9;
+  --color-on-background: #1a1c1c;
+  --color-inverse-on-surface: #f1f1f0;
+  --color-on-secondary: #ffffff;
+  --color-surface-container: #eeeeed;
+  --color-on-secondary-fixed-variant: #4a4645;
+  --color-on-error: #ffffff;
+  --color-on-surface-variant: #4b4731;
+  --color-on-primary-container: #726700;
+  --color-on-tertiary: #ffffff;
+  --color-on-primary: #ffffff;
+  --color-on-tertiary-container: #127081;
+  --color-inverse-primary: #ddc800;
+  --color-on-surface: #1a1c1c;
+  --color-on-error-container: #93000a;
+  --color-surface: #f9f9f9;
+  --color-secondary-fixed-dim: #cbc5c3;
+  --color-surface-tint: #6a5f00;
+  --color-primary-fixed-dim: #ddc800;
+  --color-surface-container-low: #f4f3f3;
+  --color-primary: #6a5f00;
+  --color-tertiary-container: #b2efff;
+  --color-secondary: #625d5c;
+  --color-tertiary-fixed-dim: #85d2e5;
+  --color-on-primary-fixed-variant: #504700;
+  --color-surface-variant: #e2e2e2;
+  --color-tertiary-fixed: #a8edff;
+  --color-outline: #7c775f;
+  --color-error-container: #ffdad6;
+  --color-surface-bright: #f9f9f9;
+  --color-on-secondary-container: #686362;
+  --color-primary-container: #ffe700;
+  --color-inverse-surface: #2f3131;
+  --color-on-tertiary-fixed-variant: #004e5b;
+  --color-on-primary-fixed: #201c00;
+  --color-surface-container-highest: #e2e2e2;
+  --color-secondary-fixed: #e8e1df;
+  --color-surface-dim: #dadada;
+  --color-primary-fixed: #fce400;
+  --color-on-tertiary-fixed: #001f26;
+  --color-surface-container-high: #e8e8e8;
+  --color-secondary-container: #e8e1df;
+  --color-surface-container-lowest: #ffffff;
+
+  /* Border radius */
+  --radius-DEFAULT: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+
+  /* Spacing */
+  --spacing-space-md: 1rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-xl: 2rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-margin: 1rem;
+  --spacing-space-xs: 0.25rem;
+  --spacing-margin-desktop: 7.5rem;
+  --spacing-gutter-desktop: 1.5rem;
+  --spacing-gutter: 1rem;
+
+  /* Font families */
+  --font-label-md: "Space Mono", monospace;
+  --font-code-md: "Space Mono", monospace;
+  --font-headline-lg: "Space Mono", monospace;
+  --font-headline-md: "Space Mono", monospace;
+  --font-label-lg: "Space Mono", monospace;
+  --font-body-sm: "Geist", sans-serif;
+  --font-body-md: "Geist", sans-serif;
+  --font-headline-xl: "Space Mono", monospace;
+  --font-body-lg: "Geist", sans-serif;
+  --font-label-sm: "Space Mono", monospace;
+  --font-headline-sm: "Space Mono", monospace;
+  --font-headline-xl-mobile: "Space Mono", monospace;
+
+  /* Font sizes (with line-height / letter-spacing / weight sub-keys) */
+  --text-label-md: 11px;
+  --text-label-md--line-height: 16px;
+  --text-label-md--letter-spacing: 0.05em;
+  --text-label-md--font-weight: 400;
+
+  --text-code-md: 12px;
+  --text-code-md--line-height: 18px;
+  --text-code-md--letter-spacing: 0em;
+  --text-code-md--font-weight: 400;
+
+  --text-headline-lg: 24px;
+  --text-headline-lg--line-height: 32px;
+  --text-headline-lg--letter-spacing: -0.01em;
+  --text-headline-lg--font-weight: 700;
+
+  --text-headline-md: 18px;
+  --text-headline-md--line-height: 24px;
+  --text-headline-md--letter-spacing: 0em;
+  --text-headline-md--font-weight: 700;
+
+  --text-label-lg: 13px;
+  --text-label-lg--line-height: 18px;
+  --text-label-lg--letter-spacing: 0.04em;
+  --text-label-lg--font-weight: 400;
+
+  --text-body-sm: 12px;
+  --text-body-sm--line-height: 16px;
+  --text-body-sm--letter-spacing: 0.01em;
+  --text-body-sm--font-weight: 400;
+
+  --text-body-md: 14px;
+  --text-body-md--line-height: 20px;
+  --text-body-md--letter-spacing: 0em;
+  --text-body-md--font-weight: 400;
+
+  --text-headline-xl: 36px;
+  --text-headline-xl--line-height: 44px;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-xl--font-weight: 700;
+
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 24px;
+  --text-body-lg--letter-spacing: -0.01em;
+  --text-body-lg--font-weight: 400;
+
+  --text-label-sm: 9px;
+  --text-label-sm--line-height: 12px;
+  --text-label-sm--letter-spacing: 0.08em;
+  --text-label-sm--font-weight: 700;
+
+  --text-headline-sm: 14px;
+  --text-headline-sm--line-height: 20px;
+  --text-headline-sm--letter-spacing: 0.02em;
+  --text-headline-sm--font-weight: 700;
+
+  --text-headline-xl-mobile: 28px;
+  --text-headline-xl-mobile--line-height: 36px;
+  --text-headline-xl-mobile--letter-spacing: -0.01em;
+  --text-headline-xl-mobile--font-weight: 700;
+}
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/*
+  The Stitch design only defines one (light) palette — there is no real dark
+  theme in DESIGN.md or any page's inline tailwind config. The toggle wired in
+  Header.astro just needs to not look broken when clicked, so this swaps the
+  handful of surface/on-surface tokens that matter most for legibility whenever
+  the inline script in Header.astro adds `dark` to <html>.
+*/
+:root.dark {
+  --color-surface: #2f3131;
+  --color-surface-container-lowest: #1a1c1c;
+  --color-surface-container-low: #232525;
+  --color-surface-container: #2a2c2c;
+  --color-surface-container-high: #333535;
+  --color-surface-container-highest: #3d3f3f;
+  --color-on-surface: #f1f1f0;
+  --color-on-surface-variant: #cdc7aa;
+  --color-inverse-surface: #f9f9f9;
+  --color-inverse-on-surface: #1a1c1c;
+  --color-background: #2f3131;
+  --color-on-background: #f1f1f0;
+}

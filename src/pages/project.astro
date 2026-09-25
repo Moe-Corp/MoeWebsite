@@ -1,0 +1,282 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="MoeLog — The Project" description="MoeLog is four npm packages, one server, one protocol and a plan to be ported to five more languages. Everything is AGPL-3.0 and everything is on GitHub.">
+  <Header currentPath="project" />
+  <main class="w-full pt-24 bg-surface">
+    <div class="flex flex-col w-full">
+      <div class="w-full bg-surface-container-lowest text-on-surface">
+        <div class="max-w-[1200px] mx-auto px-6 py-12 flex flex-col gap-16">
+          <!-- SECTION 1: HEADER -->
+          <section class="flex flex-col gap-6 border-b border-surface-container-highest pb-12">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">SPEC &amp; CODE // MLWP-PROJECT</span>
+                <div class="h-3 w-px bg-surface-container-highest"></div>
+                <span class="font-code-md text-code-md px-1.5 py-0.5 bg-surface-container-high text-on-surface rounded-DEFAULT font-bold">STATE: ACTIVE</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center justify-center w-6 h-6 border border-on-surface text-on-surface font-headline-sm text-headline-sm rounded-DEFAULT bg-surface-container-lowest select-none" title="監査 / 監 - Audit & Telemetry Spec">監</span>
+                <span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">PROJECT SPECIFICATION</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-4 max-w-4xl">
+              <h1 class="font-headline-xl text-[56px] leading-[64px] font-bold text-on-surface tracking-tight">The project.</h1>
+              <p class="font-body-lg text-[18px] leading-[28px] text-secondary font-normal">
+                MoeLog is four npm packages, one server, one protocol and a plan to be ported to five more languages. Everything is AGPL-3.0 and everything is on GitHub.
+              </p>
+            </div>
+          </section>
+
+          <!-- SECTION 2: REPOSITORY MAP (4-Column Grid) -->
+          <section class="flex flex-col gap-6">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-on-surface"></span>
+                <span class="font-label-sm text-label-sm uppercase text-secondary tracking-wider">CODEBASES &amp; REPOSITORIES // 04 TARGETS</span>
+              </div>
+              <span class="font-code-md text-code-md text-secondary">ORGANIZATION: @Moe-Corp</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="bg-surface-container-lowest border border-surface-container-highest rounded-lg p-5 flex flex-col justify-between h-[210px] hover:border-on-surface transition-colors">
+                <div class="flex flex-col gap-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-headline-md text-headline-md font-bold text-on-surface">MoeLog.js</span>
+                    <span class="font-label-md text-label-md px-2 py-0.5 rounded-full border border-tertiary text-tertiary bg-surface-container-lowest font-medium">alpha, published</span>
+                  </div>
+                  <p class="font-body-md text-body-md text-secondary leading-snug">The JavaScript and TypeScript SDK. Four packages published under @moecorp.</p>
+                </div>
+                <div class="pt-3 border-t border-surface-container-high">
+                  <a class="font-code-md text-code-md text-secondary hover:text-on-surface flex items-center justify-between transition-colors" href="https://github.com/Moe-Corp/MoeLog.js" rel="noreferrer" target="_blank">
+                    <span>github.com/Moe-Corp/MoeLog.js</span><span>↗</span>
+                  </a>
+                </div>
+              </div>
+              <div class="bg-surface-container-lowest border border-surface-container-highest rounded-lg p-5 flex flex-col justify-between h-[210px] hover:border-on-surface transition-colors">
+                <div class="flex flex-col gap-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-headline-md text-headline-md font-bold text-on-surface">MoeLog.server</span>
+                    <span class="font-label-md text-label-md px-2 py-0.5 rounded-full border border-on-surface text-on-surface bg-surface-container-lowest font-medium">alpha</span>
+                  </div>
+                  <p class="font-body-md text-body-md text-secondary leading-snug">Ingest API and dashboard. Elysia, SQLite today, Postgres next, SvelteKit.</p>
+                </div>
+                <div class="pt-3 border-t border-surface-container-high">
+                  <a class="font-code-md text-code-md text-secondary hover:text-on-surface flex items-center justify-between transition-colors" href="https://github.com/Moe-Corp/MoeLog.server" rel="noreferrer" target="_blank">
+                    <span>github.com/Moe-Corp/MoeLog.server</span><span>↗</span>
+                  </a>
+                </div>
+              </div>
+              <div class="bg-surface-container-lowest border border-surface-container-highest rounded-lg p-5 flex flex-col justify-between h-[210px] hover:border-on-surface transition-colors">
+                <div class="flex flex-col gap-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-headline-md text-headline-md font-bold text-on-surface">MoeLog.spec</span>
+                    <span class="font-label-md text-label-md px-2 py-0.5 rounded-full border border-surface-container-highest text-secondary bg-surface-container-lowest font-medium">planned</span>
+                  </div>
+                  <p class="font-body-md text-body-md text-secondary leading-snug">MLWP v1 and the conformance suite. Extracted once the protocol freezes.</p>
+                </div>
+                <div class="pt-3 border-t border-surface-container-high">
+                  <a class="font-code-md text-code-md text-secondary hover:text-on-surface flex items-center justify-between transition-colors" href="https://github.com/Moe-Corp/MoeLog.spec" rel="noreferrer" target="_blank">
+                    <span>github.com/Moe-Corp/MoeLog.spec</span><span>↗</span>
+                  </a>
+                </div>
+              </div>
+              <div class="bg-surface-container-lowest border border-surface-container-highest rounded-lg p-5 flex flex-col justify-between h-[210px] hover:border-on-surface transition-colors">
+                <div class="flex flex-col gap-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight text-[15px]">MoeLog.py · .go · .rs · .java</span>
+                    <span class="font-label-md text-label-md px-2 py-0.5 rounded-full border border-surface-container-highest text-secondary bg-surface-container-lowest font-medium">planned</span>
+                  </div>
+                  <p class="font-body-md text-body-md text-secondary leading-snug">Ports. They implement the spec, not the JS.</p>
+                </div>
+                <div class="pt-3 border-t border-surface-container-high">
+                  <a class="font-code-md text-code-md text-secondary hover:text-on-surface flex items-center justify-between transition-colors" href="https://github.com/Moe-Corp/ports" rel="noreferrer" target="_blank">
+                    <span>github.com/Moe-Corp/ports</span><span>↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 3: ROADMAP & SPEED-LINE RAIL -->
+          <section class="flex flex-col gap-8 border-t border-surface-container-highest pt-12">
+            <div class="flex flex-col gap-2">
+              <span class="font-label-sm text-label-sm uppercase text-secondary tracking-wider">ROADMAP // MILESTONES</span>
+              <h2 class="font-headline-xl text-[32px] leading-[40px] font-bold text-on-surface tracking-tight">Roadmap.</h2>
+            </div>
+            <div class="relative w-full pt-6 pb-2">
+              <div class="relative w-full h-[6px] bg-surface-container-highest rounded-full overflow-hidden">
+                <div class="absolute left-0 top-0 h-full w-[26%] bg-primary-container"></div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-8 -mt-[11px]">
+                <div class="flex flex-col gap-4 relative">
+                  <div class="flex items-center gap-3">
+                    <div class="w-4 h-4 rounded-full bg-primary-container border-2 border-on-surface flex items-center justify-center z-10">
+                      <div class="w-1.5 h-1.5 bg-on-surface rounded-full"></div>
+                    </div>
+                    <span class="font-headline-sm text-headline-sm font-bold text-on-surface">v0.0.2 — now</span>
+                  </div>
+                  <div class="flex flex-col gap-2 pl-7 border-l border-primary-container">
+                    <span class="font-body-md text-body-md text-on-surface flex items-start gap-2"><span class="text-secondary select-none">•</span><span>Node and Bun SDKs, the sidecar</span></span>
+                    <span class="font-body-md text-body-md text-on-surface flex items-start gap-2"><span class="text-secondary select-none">•</span><span>Seven failure modes reported</span></span>
+                    <span class="font-body-md text-body-md text-on-surface flex items-start gap-2"><span class="text-secondary select-none">•</span><span>Live dashboard &amp; SQLite storage</span></span>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-4 relative">
+                  <div class="flex items-center gap-3">
+                    <div class="w-4 h-4 rounded-full bg-surface-container-lowest border-2 border-on-surface flex items-center justify-center z-10">
+                      <div class="w-1.5 h-1.5 bg-transparent rounded-full"></div>
+                    </div>
+                    <span class="font-headline-sm text-headline-sm text-on-surface">v0.1 — next</span>
+                  </div>
+                  <div class="flex flex-col gap-2 pl-7 border-l border-surface-container-highest">
+                    <span class="font-body-md text-body-md text-secondary flex items-start gap-2"><span class="text-secondary select-none">•</span><span>Browser and edge packages</span></span>
+                    <span class="font-body-md text-body-md text-secondary flex items-start gap-2"><span class="text-secondary select-none">•</span><span>Source-map upload CLI &amp; read auth</span></span>
+                    <span class="font-body-md text-body-md text-secondary flex items-start gap-2"><span class="text-secondary select-none">•</span><span>Postgres storage backend</span></span>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-4 relative">
+                  <div class="flex items-center gap-3">
+                    <div class="w-4 h-4 rounded-full bg-surface-container-lowest border-2 border-secondary flex items-center justify-center z-10"></div>
+                    <span class="font-headline-sm text-headline-sm text-on-surface">v0.2</span>
+                  </div>
+                  <div class="flex flex-col gap-2 pl-7 border-l border-surface-container-highest">
+                    <span class="font-body-md text-body-md text-secondary flex items-start gap-2"><span class="text-secondary select-none">•</span><span>MLWP v1 frozen wire spec</span></span>
+                    <span class="font-body-md text-body-md text-secondary flex items-start gap-2"><span class="text-secondary select-none">•</span><span>Spec repository extracted</span></span>
+                    <span class="font-body-md text-body-md text-secondary flex items-start gap-2"><span class="text-secondary select-none">•</span><span>Conformance test suite public</span></span>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-4 relative">
+                  <div class="flex items-center gap-3">
+                    <div class="w-4 h-4 rounded-full bg-surface-container-lowest border-2 border-secondary flex items-center justify-center z-10"></div>
+                    <span class="font-headline-sm text-headline-sm text-on-surface">v1.0</span>
+                  </div>
+                  <div class="flex flex-col gap-2 pl-7 border-l border-surface-container-highest">
+                    <span class="font-body-md text-body-md text-secondary flex items-start gap-2"><span class="text-secondary select-none">•</span><span>Ports to Python and Go</span></span>
+                    <span class="font-body-md text-body-md text-secondary flex items-start gap-2"><span class="text-secondary select-none">•</span><span>Configurable alert channels</span></span>
+                    <span class="font-body-md text-body-md text-secondary flex items-start gap-2"><span class="text-secondary select-none">•</span><span>Data retention &amp; prune policies</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 4: CONTRIBUTING (Split Layout) -->
+          <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 border-t border-surface-container-highest pt-12">
+            <div class="lg:col-span-7 flex flex-col gap-6">
+              <div class="flex flex-col gap-1">
+                <span class="font-label-sm text-label-sm uppercase text-secondary tracking-wider">COLLABORATION // GUIDELINES</span>
+                <h2 class="font-headline-xl text-[32px] leading-[40px] font-bold text-on-surface tracking-tight">How to help.</h2>
+              </div>
+              <div class="flex flex-col divide-y divide-surface-container-highest border-t border-b border-surface-container-highest">
+                <div class="flex items-start gap-4 py-4">
+                  <span class="font-headline-sm text-headline-sm font-bold text-on-surface w-6 pt-0.5">1.</span>
+                  <p class="font-body-md text-body-md text-on-surface">Run it on something real and open an issue when it lies to you.</p>
+                </div>
+                <div class="flex items-start gap-4 py-4">
+                  <span class="font-headline-sm text-headline-sm font-bold text-on-surface w-6 pt-0.5">2.</span>
+                  <p class="font-body-md text-body-md text-on-surface">Port the conformance suite to a language you know.</p>
+                </div>
+                <div class="flex items-start gap-4 py-4">
+                  <span class="font-headline-sm text-headline-sm font-bold text-on-surface w-6 pt-0.5">3.</span>
+                  <p class="font-body-md text-body-md text-on-surface">Argue with the protocol before v1 freezes it.</p>
+                </div>
+                <div class="flex items-start gap-4 py-4 bg-surface-container-low/50 px-2 rounded-DEFAULT">
+                  <span class="font-headline-sm text-headline-sm font-bold text-error w-6 pt-0.5">4.</span>
+                  <p class="font-body-md text-body-md text-on-surface font-medium">Do not send a PR that adds a runtime dependency; it will be closed.</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-5 flex flex-col justify-center">
+              <div class="bg-surface-container-low border border-surface-container-highest rounded-lg p-6 flex flex-col gap-4">
+                <div class="flex items-center justify-between border-b border-surface-container-high pb-3">
+                  <span class="font-label-sm text-label-sm font-bold tracking-widest text-on-surface">CLA REQUIREMENT</span>
+                  <span class="font-code-md text-code-md text-secondary">LEGAL / LICENSING</span>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                  Every contributor signs a CLA. Not out of ceremony: dual licensing needs a single copyright holder, and without it the commercial license can never exist.
+                </p>
+                <div class="pt-2">
+                  <a class="inline-flex items-center gap-2 font-code-md text-code-md font-bold text-on-surface hover:text-primary transition-colors" href="#">
+                    <span>Read the CLA agreement</span><span>→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 5: NON-NEGOTIABLE PRINCIPLES STRIP -->
+          <section class="flex flex-col gap-6 border-t border-surface-container-highest pt-12">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-primary-container border border-on-surface"></span>
+                <span class="font-label-sm text-label-sm uppercase text-secondary tracking-wider">NON-NEGOTIABLE PRINCIPLES // 6 CORE INVARIANTS</span>
+              </div>
+              <span class="font-code-md text-code-md text-secondary">ENFORCED IN CI</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 border border-surface-container-highest rounded-lg divide-y lg:divide-y-0 lg:divide-x divide-surface-container-highest bg-surface-container-lowest">
+              <div class="p-4 flex flex-col gap-2">
+                <span class="font-headline-md text-headline-md font-bold text-primary-container select-none drop-shadow-[0_1px_1px_rgba(45,42,41,0.9)]">01</span>
+                <span class="font-headline-sm text-headline-sm font-bold text-on-surface">Budget before features.</span>
+                <p class="font-body-sm text-body-sm text-secondary leading-snug">Every package has a byte limit checked in CI.</p>
+              </div>
+              <div class="p-4 flex flex-col gap-2">
+                <span class="font-headline-md text-headline-md font-bold text-primary-container select-none drop-shadow-[0_1px_1px_rgba(45,42,41,0.9)]">02</span>
+                <span class="font-headline-sm text-headline-sm font-bold text-on-surface">Zero runtime dependencies.</span>
+                <p class="font-body-sm text-body-sm text-secondary leading-snug">Not one, in any published package, ever.</p>
+              </div>
+              <div class="p-4 flex flex-col gap-2">
+                <span class="font-headline-md text-headline-md font-bold text-primary-container select-none drop-shadow-[0_1px_1px_rgba(45,42,41,0.9)]">03</span>
+                <span class="font-headline-sm text-headline-sm font-bold text-on-surface">The main thread is sacred.</span>
+                <p class="font-body-sm text-body-sm text-secondary leading-snug">Capture is validate plus push. Nothing else.</p>
+              </div>
+              <div class="p-4 flex flex-col gap-2">
+                <span class="font-headline-md text-headline-md font-bold text-primary-container select-none drop-shadow-[0_1px_1px_rgba(45,42,41,0.9)]">04</span>
+                <span class="font-headline-sm text-headline-sm font-bold text-on-surface">Fail silently.</span>
+                <p class="font-body-sm text-body-sm text-secondary leading-snug">No throw ever escapes the SDK. If MoeLog breaks, your app never finds out.</p>
+              </div>
+              <div class="p-4 flex flex-col gap-2">
+                <span class="font-headline-md text-headline-md font-bold text-primary-container select-none drop-shadow-[0_1px_1px_rgba(45,42,41,0.9)]">05</span>
+                <span class="font-headline-sm text-headline-sm font-bold text-on-surface">No PII by default.</span>
+                <p class="font-body-sm text-body-sm text-secondary leading-snug">Nothing identifiable is collected unless you declare it explicitly.</p>
+              </div>
+              <div class="p-4 flex flex-col gap-2">
+                <span class="font-headline-md text-headline-md font-bold text-primary-container select-none drop-shadow-[0_1px_1px_rgba(45,42,41,0.9)]">06</span>
+                <span class="font-headline-sm text-headline-sm font-bold text-on-surface">The protocol is the product.</span>
+                <p class="font-body-sm text-body-sm text-secondary leading-snug">The spec is the reference, not the JavaScript implementation.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 6: AN HONEST RISKS BLOCK -->
+          <section class="border border-surface-container-highest rounded-lg bg-surface-container-low p-8 flex flex-col gap-6">
+            <div class="flex items-center justify-between border-b border-surface-container-high pb-4">
+              <div class="flex flex-col gap-1">
+                <span class="font-label-sm text-label-sm uppercase text-secondary tracking-wider">FAILURE MODES &amp; TRADE-OFFS</span>
+                <h2 class="font-headline-lg text-[28px] leading-[36px] font-bold text-on-surface">What could go wrong.</h2>
+              </div>
+              <span class="font-code-md text-code-md text-secondary">UNVARNISHED ASSESSMENT</span>
+            </div>
+            <div class="flex flex-col divide-y divide-surface-container-highest">
+              <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 py-5">
+                <span class="font-headline-md text-headline-md font-bold text-on-surface md:w-56 shrink-0">One author.</span>
+                <p class="font-body-lg text-[15px] leading-[22px] text-on-surface">The bus factor is one. The mitigation is the spec: if this stops, the protocol and the conformance suite are still there and still AGPL.</p>
+              </div>
+              <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 py-5">
+                <span class="font-headline-md text-headline-md font-bold text-on-surface md:w-56 shrink-0">The AGPL scares some companies.</span>
+                <p class="font-body-lg text-[15px] leading-[22px] text-on-surface">That is intended for services, and it is a real cost for adoption. Dual licensing is the escape hatch, once there is someone to negotiate with.</p>
+              </div>
+              <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 py-5">
+                <span class="font-headline-md text-headline-md font-bold text-on-surface md:w-56 shrink-0">Sentry could ship an out-of-process agent tomorrow.</span>
+                <p class="font-body-lg text-[15px] leading-[22px] text-on-surface">Then MoeLog competes on bytes and on setup cost alone. Those are still real, and they are still not solved.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <Footer />
+  </main>
+</Layout>

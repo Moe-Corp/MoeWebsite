@@ -1,71 +1,738 @@
 ---
-import '../styles/global.css'
-import { Image } from "astro:assets"
-import logo from "../image/moe_corp.png"
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
-<!DOCTYPE html>
-<html lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-		<title>MoeCorp - Innovando con Tecnología Moe</title>
-	</head>
-	<body class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen font-sans">
 
-		<!-- Header -->
-		<header class="bg-white shadow-lg">
-			<div class="container mx-auto px-6 py-4 flex justify-between items-center">
-				<h1 class="text-3xl font-bold text-gray-800">Moe<span class="text-gray-600">Corp</span></h1>
-				<nav>
-					<ul class="flex space-x-6 text-gray-700">
-						<li><a href="#about" class="hover:text-gray-900 transition-colors">Sobre Nosotros</a></li>
-						<li><a href="#products" class="hover:text-gray-900 transition-colors">Productos</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+<Layout title="MoeLog — Infrastructure Observability">
+  <Header />
+  <main class="w-full pt-24 bg-surface">
+    <div class="max-w-7xl mx-auto px-gutter-desktop py-space-xl">
+      <div class="flex flex-col w-full text-[#2D2A29]">
+        <!-- SVG Patterns (Kasen & Genko Yoshi Grids) -->
+        <svg class="hidden">
+          <defs>
+            <pattern height="8" id="speed-lines-pat" patternUnits="userSpaceOnUse" width="40">
+              <line stroke="#2D2A29" stroke-opacity="0.05" stroke-width="1" x1="0" x2="40" y1="4" y2="4"></line>
+            </pattern>
+            <pattern height="6" id="speed-lines-dense" patternUnits="userSpaceOnUse" width="32">
+              <line stroke="#2D2A29" stroke-opacity="0.12" stroke-width="1" x1="0" x2="32" y1="3" y2="3"></line>
+            </pattern>
+            <pattern height="24" id="genko-yoshi" patternUnits="userSpaceOnUse" width="24">
+              <rect fill="none" height="24" stroke="#2D2A29" stroke-opacity="0.03" stroke-width="1" width="24"></rect>
+              <line stroke="#2D2A29" stroke-dasharray="2,2" stroke-opacity="0.03" stroke-width="0.5" x1="12" x2="12" y1="0" y2="24"></line>
+              <line stroke="#2D2A29" stroke-dasharray="2,2" stroke-opacity="0.03" stroke-width="0.5" x1="0" x2="24" y1="12" y2="12"></line>
+            </pattern>
+          </defs>
+        </svg>
 
-		<!-- Hero Section -->
-		<section class="container mx-auto px-6 py-20 text-center">
-			<h2 class="text-5xl font-bold text-gray-800 mb-4">Bienvenido a MoeCorp</h2>
-			<p class="text-xl text-gray-700 mb-8">Desarrollamos un ecosistema de productos moe para facilitar tu vida diaria. Desde seguridad hasta finanzas, estamos aquí para ayudarte. UwU</p>
-			<a href="#products" class="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-900 transition-colors">Descubre Nuestros Productos</a>
-		</section>
+        <!-- 2. HERO SECTION -->
+        <section class="relative w-full pb-16 pt-4 border-b border-[#BFBFC0]">
+          <div class="absolute inset-0 pointer-events-none kinetic-speed-lines" style="background-image: repeating-linear-gradient(90deg, rgba(45,42,41,0.04) 0px, rgba(45,42,41,0.04) 20px, transparent 20px, transparent 40px); background-size: 40px 100%;"></div>
+          <div class="relative grid grid-cols-12 gap-6 items-start">
+            <!-- Left Column (7 cols) -->
+            <div class="col-span-12 lg:col-span-7 flex flex-col space-y-6">
+              <div class="flex items-center gap-2">
+                <span class="font-label-md text-label-md tracking-[0.12em] text-[#8B8C8C] uppercase">死活監視 · LIVENESS MONITORING</span>
+                <span class="relative inline-block w-12 h-px bg-[#BFBFC0] overflow-hidden">
+                  <span class="absolute inset-0 bg-[#FFE700] w-4" style="animation: flow-line 2s linear infinite;"></span>
+                </span>
+              </div>
+              <h1 class="font-headline-xl text-[44px] lg:text-[56px] leading-[1.05] tracking-tight text-[#2D2A29] font-bold">
+                Observability that outlives the process it watches.
+              </h1>
+              <p class="font-body-lg text-body-lg text-[#2D2A29] max-w-[52ch] leading-relaxed">
+                A 1.5 kB core, zero runtime dependencies, and a sidecar that runs outside your application — so a SIGKILL, a kernel OOM or a blocked event loop still gets reported. Self-host the whole stack on a free tier.
+              </p>
+              <!-- Code Box -->
+              <div class="rounded-[2px] bg-[#2D2A29] border border-[#2D2A29] p-4 text-[#FFFFFF] flex flex-col gap-3">
+                <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                  <div class="flex items-center gap-4 font-label-md text-label-md text-[#8B8C8C]" id="install-runtime-tabs">
+                    <button class="text-[#FFE700] border-b-2 border-[#FFE700] pb-1 font-bold" onclick="selectRuntime('node', this)" type="button">node</button>
+                    <button class="hover:text-white pb-1" onclick="selectRuntime('bun', this)" type="button">bun</button>
+                    <button class="hover:text-white pb-1" onclick="selectRuntime('deno', this)" type="button">deno</button>
+                    <button class="hover:text-white pb-1" onclick="selectRuntime('browser', this)" type="button">browser</button>
+                    <button class="hover:text-white pb-1" onclick="selectRuntime('edge', this)" type="button">edge</button>
+                  </div>
+                  <button class="font-code-md text-code-md text-[#8B8C8C] hover:text-[#FFE700] flex items-center gap-1 transition-all active:scale-95 py-0.5 px-1.5 rounded" id="copy-btn" onclick="copyInstallCmd()" type="button">
+                    <span class="material-symbols-outlined text-[14px]" id="copy-icon">content_copy</span>
+                    <span id="copy-label">copy</span>
+                  </button>
+                </div>
+                <div class="font-code-md text-code-md tracking-tight overflow-x-auto text-[#FFFFFF] py-1 flex items-center justify-between">
+                  <span id="install-command"><span class="text-[#FFE700]">$</span> npm i @moecorp/moelog-node @moecorp/moelog-sidecar</span>
+                  <span class="font-label-sm text-[10px] text-[#8B8C8C] shrink-0 ml-2">0.95 kB core</span>
+                </div>
+              </div>
+              <!-- Buttons -->
+              <div class="flex flex-wrap items-center gap-4 pt-2">
+                <a class="px-6 py-3 bg-[#FFE700] text-[#2D2A29] font-headline-sm text-headline-sm font-medium rounded-[4px] border border-[#2D2A29] hover:bg-[#F5D80D] active:translate-x-px active:translate-y-px transition-all flex items-center gap-2 group" href="/docs">
+                  <span>Start in five minutes</span>
+                  <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+                </a>
+                <a class="px-6 py-3 bg-transparent text-[#2D2A29] font-headline-sm text-headline-sm font-medium rounded-[4px] border border-[#2D2A29] hover:bg-[#2D2A29]/5 active:translate-x-px active:translate-y-px transition-all" href="https://github.com/Moe-Corp/MoeLog.js" rel="noreferrer" target="_blank">
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+            <!-- Right Column (5 cols) -->
+            <div class="col-span-12 lg:col-span-5 flex flex-col pt-2">
+              <div class="bg-[#2D2A29] border border-[#BFBFC0] rounded-[2px] overflow-hidden shadow-sm">
+                <div class="h-9 px-3 bg-[#2D2A29] border-b border-white/10 flex items-center justify-between text-[#8B8C8C]">
+                  <div class="flex items-center gap-2">
+                    <span class="inline-block w-2 h-2 rounded-full bg-[#FFE700] anim-live-dot"></span>
+                    <span class="font-label-md text-label-md text-[#FFE700]" id="terminal-badge">sidecar · alert emitted 00:41:07</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="font-label-sm text-[9px] text-[#A4CF58] uppercase px-1 border border-[#A4CF58]/40 rounded-[2px]">LIVE</span>
+                    <span class="font-label-sm text-label-sm text-[#8B8C8C]">UNIX_SOCKET</span>
+                  </div>
+                </div>
+                <div class="p-4 font-code-md text-[13px] leading-relaxed text-[#FFFFFF] overflow-x-auto font-mono min-h-[160px] flex flex-col justify-between" id="terminal-log-content">
+                  <div id="ndjson-trace">
+                    <div>{"{"}<span class="text-[#187384]">"type"</span>:<span class="text-[#FFE700]">"app.crashed"</span>,<span class="text-[#187384]">"app"</span>:<span class="text-[#cbc5c3]">"checkout-api"</span>,</div>
+                    <div class="pl-2"><span class="text-[#187384]">"runtime"</span>:<span class="text-[#cbc5c3]">"node@22.3.0"</span>,<span class="text-[#187384]">"release"</span>:<span class="text-[#cbc5c3]">"1.4.2"</span>,</div>
+                    <div class="pl-2"><span class="text-[#187384]">"pid"</span>:<span class="text-[#cbc5c3]">48211</span>,<span class="text-[#187384]">"signal"</span>:<span class="text-[#FFE700]">"SIGKILL"</span>,</div>
+                    <div class="pl-2"><span class="text-[#187384]">"last_heartbeat_ms_ago"</span>:<span class="text-[#cbc5c3]">1840</span>,</div>
+                    <div class="pl-2"><span class="text-[#187384]">"fingerprint"</span>:<span class="text-[#187384]">"a7f3c901"</span>{"}"}</div>
+                  </div>
+                  <div class="pt-2 text-xs text-[#8B8C8C] flex items-center justify-between border-t border-white/5 mt-2">
+                    <span class="flex items-center gap-1.5"><span class="text-[#FFE700]">›</span> <span id="terminal-stream-msg">stream reading /var/run/moelog.sock</span><span class="anim-terminal-cursor"></span></span>
+                    <button class="text-[10px] text-[#FFE700]/70 hover:text-[#FFE700] underline" onclick="cycleTraceLog()" type="button">trigger signal</button>
+                  </div>
+                </div>
+              </div>
+              <p class="font-body-md text-body-md text-[#8B8C8C] mt-3">The process that wrote this was not the process that died.</p>
+            </div>
+          </div>
+        </section>
 
-		<!-- About Section -->
-		<section id="about" class="container mx-auto px-6 py-20 bg-white shadow-lg rounded-lg my-10">
-			<div class="flex flex-col md:flex-row items-center">
-				<Image class="image" src={logo} alt={"MoeCorp"} class="rounded-lg mb-6 md:mb-0 md:mr-10"/>
-				<div>
-					<h3 class="text-3xl font-bold text-gray-800 mb-4">¿Quiénes Somos?</h3>
-					<p class="text-gray-700 leading-relaxed">En MoeCorp, combinamos tecnología innovadora con un enfoque kawaii para crear soluciones prácticas y divertidas. Nuestro objetivo es mejorar tu vida diaria con productos que son tan funcionales como adorables. OwO</p>
-				</div>
-			</div>
-		</section>
+        <!-- 3. PROOF STRIP -->
+        <section class="w-full bg-[#2D2A29]/[0.03] border-b border-[#BFBFC0]">
+          <div class="grid grid-cols-2 md:grid-cols-5 min-h-[64px] divide-y md:divide-y-0 md:divide-x divide-[#BFBFC0] items-center text-center">
+            <div class="py-3 px-2 font-code-md text-code-md text-[#2D2A29] font-medium tracking-tight">0 runtime dependencies</div>
+            <div class="py-3 px-2 font-code-md text-code-md text-[#2D2A29] font-medium tracking-tight">1.5 kB core, gzip</div>
+            <div class="py-3 px-2 font-code-md text-code-md text-[#2D2A29] font-medium tracking-tight">4 packages on npm</div>
+            <div class="py-3 px-2 font-code-md text-code-md text-[#2D2A29] font-medium tracking-tight">AGPL-3.0</div>
+            <div class="py-3 px-2 col-span-2 md:col-span-1 font-code-md text-code-md text-[#2D2A29] font-medium tracking-tight">Node · Bun · Deno · Browser · Edge</div>
+          </div>
+        </section>
 
-		<!-- Products Section -->
-		<section id="products" class="container mx-auto px-6 py-20">
-			<h3 class="text-4xl font-bold text-center text-gray-800 mb-10">Nuestros Productos</h3>
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-				<!-- MoeCrypt -->
-				<div class="bg-white shadow-lg rounded-lg p-6 text-center">
-					<h4 class="text-2xl font-bold text-gray-800 mb-4">MoeCrypt</h4>
-					<p class="text-gray-700">Una herramienta completa y fácil de usar para cifrar y descifrar archivos. Protege tus datos importantes con tecnología confiable y un diseño moe. UwU</p>
-				</div>
-				<!-- MoeFinans -->
-				<div class="bg-white shadow-lg rounded-lg p-6 text-center">
-					<h4 class="text-2xl font-bold text-gray-800 mb-4">MoeFinans</h4>
-					<p class="text-gray-700">Una aplicación multiplataforma para gestionar tus gastos en moneda local, internacional o criptomonedas. Simplifica tus finanzas con estilo moe. OwO</p>
-				</div>
-			</div>
-		</section>
+        <!-- 4. THE THREE BLIND SPOTS -->
+        <section class="w-full py-16 border-b border-[#BFBFC0]">
+          <div class="flex flex-col space-y-3 mb-10">
+            <span class="font-label-md text-label-md tracking-[0.12em] text-[#8B8C8C] uppercase">THE ARGUMENT</span>
+            <h2 class="font-headline-lg text-[32px] text-[#2D2A29] font-bold tracking-tight">Three things an in-process SDK can never tell you.</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="flex flex-col p-4 rounded-[2px] technical-card-hover border border-transparent">
+              <div class="w-full h-1 bg-[#FFE700] mb-4"></div>
+              <div class="font-headline-xl text-[40px] leading-none text-[#BFBFC0] font-bold mb-3">01</div>
+              <h3 class="font-headline-md text-headline-md text-[#2D2A29] font-bold mb-2">SIGKILL and kernel OOM</h3>
+              <p class="font-body-md text-body-md text-[#2D2A29]/80 leading-relaxed">The kernel killed the process without warning. To report that, your SDK would have to still be running. It isn't.</p>
+            </div>
+            <div class="flex flex-col p-4 rounded-[2px] technical-card-hover border border-transparent">
+              <div class="w-full h-1 bg-[#FFE700] mb-4"></div>
+              <div class="font-headline-xl text-[40px] leading-none text-[#BFBFC0] font-bold mb-3">02</div>
+              <h3 class="font-headline-md text-headline-md text-[#2D2A29] font-bold mb-2">A blocked event loop</h3>
+              <p class="font-body-md text-body-md text-[#2D2A29]/80 leading-relaxed">To report that the loop is blocked, you would need the very loop that is blocked. The app is alive and answering nothing.</p>
+            </div>
+            <div class="flex flex-col p-4 rounded-[2px] technical-card-hover border border-transparent">
+              <div class="w-full h-1 bg-[#FFE700] mb-4"></div>
+              <div class="font-headline-xl text-[40px] leading-none text-[#BFBFC0] font-bold mb-3">03</div>
+              <h3 class="font-headline-md text-headline-md text-[#2D2A29] font-bold mb-2">A process that never started</h3>
+              <p class="font-body-md text-body-md text-[#2D2A29]/80 leading-relaxed">It failed before your instrumentation ever ran. There was nobody there to catch it.</p>
+            </div>
+          </div>
+          <div class="text-center pt-4">
+            <p class="font-body-lg text-[20px] text-[#2D2A29]">
+              MoeLog reports all three, <span class="border-b-4 border-[#FFE700] pb-0.5 font-medium">because the reporter does not live inside your app.</span>
+            </p>
+          </div>
+        </section>
 
-		<!-- Footer -->
-		<footer class="bg-gray-800 text-white py-6 mt-10">
-			<div class="container mx-auto px-6 text-center">
-				<p>&copy; 2023 MoeCorp. Todos los derechos reservados. Hecho con amor y café. UwU</p>
-			</div>
-		</footer>
-	</body>
-</html>
+        <!-- 5. HOW IT WORKS (Full Bleed Ink Section with Kinetic SVG Flow) -->
+        <section class="-mx-gutter-desktop px-gutter-desktop py-20 bg-[#2D2A29] text-[#FFFFFF]">
+          <div class="relative max-w-7xl mx-auto flex flex-col">
+            <div class="hidden xl:flex absolute -left-12 top-0 flex-col items-center">
+              <span class="font-bold text-sm tracking-widest text-[#8B8C8C]" style="writing-mode: vertical-rl;">番犬</span>
+              <span class="font-label-sm text-[10px] text-[#8B8C8C] mt-2 uppercase tracking-widest">banken</span>
+            </div>
+            <div class="flex flex-col space-y-2 mb-12">
+              <span class="font-label-md text-label-md text-[#8B8C8C] tracking-[0.12em] uppercase">番犬 · WATCHDOG</span>
+              <h2 class="font-headline-lg text-[32px] text-white font-bold tracking-tight">Your app writes to a socket and forgets about it.</h2>
+            </div>
+            <div class="w-full overflow-x-auto pb-4">
+              <div class="min-w-[860px] flex items-center justify-between py-6">
+                <div class="border border-[#8B8C8C] p-3 px-4 rounded-[2px] bg-[#2D2A29] text-center technical-card-hover">
+                  <span class="font-headline-sm text-headline-sm text-white">Your app</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center px-2">
+                  <span class="font-code-md text-[10px] text-[#8B8C8C] mb-1">unix socket · NDJSON</span>
+                  <div class="w-full flex items-center">
+                    <svg class="w-full h-4" preserveAspectRatio="none" viewBox="0 0 100 10">
+                      <line class="pipeline-dash-flow" stroke="#FFE700" stroke-width="1.5" x1="0" x2="94" y1="5" y2="5"></line>
+                      <polygon fill="#FFE700" points="94,2 100,5 94,8"></polygon>
+                    </svg>
+                  </div>
+                </div>
+                <div class="bg-[#FFE700] text-[#2D2A29] p-3 px-4 rounded-[2px] font-bold text-center border border-[#FFE700] shadow-[0_0_12px_rgba(255,231,0,0.25)]">
+                  <span class="font-headline-sm text-headline-sm">Sidecar (detached process)</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center px-2">
+                  <span class="font-code-md text-[10px] text-[#8B8C8C] mb-1">HTTPS · compressed MLWP batch</span>
+                  <div class="w-full flex items-center">
+                    <svg class="w-full h-4" preserveAspectRatio="none" viewBox="0 0 100 10">
+                      <line class="pipeline-dash-flow" stroke="#FFE700" stroke-width="1.5" x1="0" x2="94" y1="5" y2="5"></line>
+                      <polygon fill="#FFE700" points="94,2 100,5 94,8"></polygon>
+                    </svg>
+                  </div>
+                </div>
+                <div class="border border-[#8B8C8C] p-3 px-4 rounded-[2px] bg-[#2D2A29] text-center technical-card-hover">
+                  <span class="font-headline-sm text-headline-sm text-white">Ingest API</span>
+                </div>
+                <div class="w-8 flex items-center px-1">
+                  <svg class="w-full h-4" viewBox="0 0 32 10">
+                    <line class="pipeline-dash-flow" stroke="#8B8C8C" stroke-width="1.2" x1="0" x2="32" y1="5" y2="5"></line>
+                  </svg>
+                </div>
+                <div class="border border-[#8B8C8C] p-3 px-4 rounded-[2px] bg-[#2D2A29] text-center technical-card-hover">
+                  <span class="font-headline-sm text-headline-sm text-white">Postgres</span>
+                </div>
+                <div class="w-8 flex items-center px-1">
+                  <svg class="w-full h-4" viewBox="0 0 32 10">
+                    <line class="pipeline-dash-flow" stroke="#8B8C8C" stroke-width="1.2" x1="0" x2="32" y1="5" y2="5"></line>
+                  </svg>
+                </div>
+                <div class="border border-[#8B8C8C] p-3 px-4 rounded-[2px] bg-[#2D2A29] text-center technical-card-hover">
+                  <span class="font-headline-sm text-headline-sm text-white">Dashboard</span>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+              <div class="border-t border-white/20 pt-4 flex flex-col space-y-2 technical-card-hover rounded-b-[2px] p-2">
+                <h3 class="font-headline-sm text-headline-sm text-[#FFE700]">No network in your process.</h3>
+                <p class="font-body-md text-body-md text-[#cbc5c3] leading-relaxed">The SDK validates, pushes to a pre-allocated ring buffer and returns. Serialising, compressing and sending happen somewhere else.</p>
+              </div>
+              <div class="border-t border-white/20 pt-4 flex flex-col space-y-2 technical-card-hover rounded-b-[2px] p-2">
+                <h3 class="font-headline-sm text-headline-sm text-[#FFE700]">It survives the app.</h3>
+                <p class="font-body-md text-body-md text-[#cbc5c3] leading-relaxed">Launched detached, it outlives the process it watches. It reads the crash markers off disk and classifies the death: fatal, crashed, exited_error, or a clean goodbye.</p>
+              </div>
+              <div class="border-t border-white/20 pt-4 flex flex-col space-y-2 technical-card-hover rounded-b-[2px] p-2">
+                <h3 class="font-headline-sm text-headline-sm text-[#FFE700]">It fits in a free tier.</h3>
+                <p class="font-body-md text-body-md text-[#cbc5c3] leading-relaxed">No Kafka. No ClickHouse. No four-container compose file. A Node process and a Postgres database.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. ALERTS -->
+        <section class="w-full py-16 border-b border-[#BFBFC0]">
+          <div class="flex flex-col space-y-2 mb-8">
+            <span class="font-label-md text-label-md tracking-[0.12em] text-[#8B8C8C] uppercase">障害 · INCIDENTS</span>
+            <h2 class="font-headline-lg text-[32px] text-[#2D2A29] font-bold tracking-tight">Six ways a process dies, each with its own signal.</h2>
+          </div>
+          <div class="w-full overflow-x-auto border-t-2 border-[#2D2A29]">
+            <table class="w-full text-left border-collapse min-w-[700px]">
+              <thead>
+                <tr class="border-b border-[#BFBFC0] bg-[#FFFFFF]">
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#8B8C8C] uppercase">TYPE</th>
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#8B8C8C] uppercase">WHAT HAPPENED</th>
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#8B8C8C] uppercase">SEVERITY</th>
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#8B8C8C] uppercase text-right">SOURCE</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#BFBFC0] font-body-md text-body-md">
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-12 cursor-pointer" onclick="setTerminalTrace('app.fatal', 'uncaught exception', 'SIGABRT', 241)">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">app.fatal</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">Uncaught exception. The app died of an error, and the full stack came with it</td>
+                  <td class="py-2 px-4"><span class="inline-block px-2.5 py-0.5 rounded-full bg-[#2D2A29] text-[#FFE700] font-label-sm text-label-sm uppercase font-bold tracking-wider">severe</span></td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#8B8C8C] text-right">in-process</td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-12 cursor-pointer" onclick="setTerminalTrace('app.crashed', 'checkout-api', 'SIGKILL', 1840)">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">app.crashed</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">Abrupt death with no goodbye: SIGKILL, kernel OOM or a runtime panic</td>
+                  <td class="py-2 px-4"><span class="inline-block px-2.5 py-0.5 rounded-full bg-[#2D2A29] text-[#FFE700] font-label-sm text-label-sm uppercase font-bold tracking-wider">severe</span></td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#8B8C8C] text-right">sidecar only</td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-12 cursor-pointer" onclick="setTerminalTrace('app.blocked', 'worker-queue', 'HEARTBEAT_TIMEOUT', 5120)">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">app.blocked</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">The heartbeat stopped. The app is still alive and is answering nothing</td>
+                  <td class="py-2 px-4"><span class="inline-block px-2.5 py-0.5 rounded-full bg-[#F8951D] text-white font-label-sm text-label-sm uppercase font-bold tracking-wider">degraded</span></td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#8B8C8C] text-right">sidecar only</td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-12 cursor-pointer" onclick="setTerminalTrace('app.recovered', 'worker-queue', 'RESUMED', 320)">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">app.recovered</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">The heartbeat came back after a block</td>
+                  <td class="py-2 px-4"><span class="inline-block px-2.5 py-0.5 rounded-full bg-[#A4CF58] text-[#2D2A29] font-label-sm text-label-sm uppercase font-bold tracking-wider">recovered</span></td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#8B8C8C] text-right">sidecar only</td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-12 cursor-pointer" onclick="setTerminalTrace('app.exited_error', 'billing-sync', 'EXIT_CODE_1', 940)">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">app.exited_error</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">Terminated with a non-zero exit code</td>
+                  <td class="py-2 px-4"><span class="inline-block px-2.5 py-0.5 rounded-full bg-[#D69894] text-[#2D2A29] font-label-sm text-label-sm uppercase font-bold tracking-wider">error</span></td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#8B8C8C] text-right">sidecar</td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-12 cursor-pointer" onclick="setTerminalTrace('app.failed_to_start', 'ingest-proxy', 'SIGSEGV_EARLY', 0)">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">app.failed_to_start</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">It never came up at all</td>
+                  <td class="py-2 px-4"><span class="inline-block px-2.5 py-0.5 rounded-full bg-[#2D2A29] text-[#FFE700] font-label-sm text-label-sm uppercase font-bold tracking-wider">severe</span></td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#8B8C8C] text-right">sidecar only</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="font-body-sm text-[13px] text-[#8B8C8C] mt-4 flex items-center justify-between">
+            <span>blocked and recovered usually arrive as a pair. The dashboard shows them joined.</span>
+            <span class="font-code-md text-[11px] text-[#2D2A29]/60">Click any row to test-inject signal</span>
+          </p>
+        </section>
+
+        <!-- 7. BUDGETS (with Genkō yōshi grid) -->
+        <section class="relative w-full py-16 border-b border-[#BFBFC0]">
+          <div class="absolute inset-0 pointer-events-none" style="background-image: repeating-linear-gradient(0deg, rgba(45,42,41,0.03) 0px, rgba(45,42,41,0.03) 1px, transparent 1px, transparent 32px), repeating-linear-gradient(90deg, rgba(45,42,41,0.03) 0px, rgba(45,42,41,0.03) 1px, transparent 1px, transparent 32px);"></div>
+          <div class="relative flex flex-col space-y-2 mb-8">
+            <span class="font-label-md text-label-md tracking-[0.12em] text-[#8B8C8C] uppercase">軽量 · LIGHTWEIGHT</span>
+            <h2 class="font-headline-lg text-[32px] text-[#2D2A29] font-bold tracking-tight">Every package has a byte budget, and CI enforces it.</h2>
+          </div>
+          <div class="relative w-full overflow-x-auto border-t-2 border-[#2D2A29] bg-white">
+            <table class="w-full text-left border-collapse min-w-[650px]">
+              <thead>
+                <tr class="border-b border-[#BFBFC0]">
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#8B8C8C] uppercase">PACKAGE</th>
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#8B8C8C] uppercase">WHAT IT DOES</th>
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#8B8C8C] uppercase text-right">GZIP</th>
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#8B8C8C] uppercase text-right">STATUS</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#BFBFC0] font-body-md text-body-md">
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-11">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">@moecorp/moelog-core</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">Ring buffer, scope, sampling, hooks, MLWP</td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] text-right font-medium">4.0 kB</td>
+                  <td class="py-2 px-4 text-right"><span class="inline-block px-2.5 py-0.5 rounded-full bg-[#A4CF58] text-[#2D2A29] font-label-sm text-label-sm uppercase font-bold tracking-wider">shipped</span></td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-11">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">@moecorp/moelog-sidecar</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">Protocol, transport, daemon and CLI</td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] text-right font-medium">3.9+4.5</td>
+                  <td class="py-2 px-4 text-right"><span class="inline-block px-2.5 py-0.5 rounded-full bg-[#A4CF58] text-[#2D2A29] font-label-sm text-label-sm uppercase font-bold tracking-wider">shipped</span></td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-11">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">@moecorp/moelog-node</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">What Node does differently</td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] text-right font-medium">0.95 kB</td>
+                  <td class="py-2 px-4 text-right"><span class="inline-block px-2.5 py-0.5 rounded-full bg-[#A4CF58] text-[#2D2A29] font-label-sm text-label-sm uppercase font-bold tracking-wider">shipped</span></td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-11">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">@moecorp/moelog-bun</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">What Bun does differently</td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] text-right font-medium">1.3 kB</td>
+                  <td class="py-2 px-4 text-right"><span class="inline-block px-2.5 py-0.5 rounded-full bg-[#A4CF58] text-[#2D2A29] font-label-sm text-label-sm uppercase font-bold tracking-wider">shipped</span></td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-11">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">@moecorp/moelog-browser</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">onerror, unhandledrejection, sendBeacon</td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#8B8C8C] text-right font-medium">≤ 3 kB</td>
+                  <td class="py-2 px-4 text-right"><span class="inline-block px-2.5 py-0.5 rounded-full bg-white border border-[#BFBFC0] text-[#8B8C8C] font-label-sm text-label-sm uppercase font-bold tracking-wider">planned</span></td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-11">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">@moecorp/moelog-edge</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">fetch transport with waitUntil</td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#8B8C8C] text-right font-medium">≤ 2 kB</td>
+                  <td class="py-2 px-4 text-right"><span class="inline-block px-2.5 py-0.5 rounded-full bg-white border border-[#BFBFC0] text-[#8B8C8C] font-label-sm text-label-sm uppercase font-bold tracking-wider">planned</span></td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-11">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">@moecorp/moelog-react</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">Error boundary and useMoeLog</td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#8B8C8C] text-right font-medium">≤ 1 kB</td>
+                  <td class="py-2 px-4 text-right"><span class="inline-block px-2.5 py-0.5 rounded-full bg-white border border-[#BFBFC0] text-[#8B8C8C] font-label-sm text-label-sm uppercase font-bold tracking-wider">planned</span></td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-11">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">@moecorp/moelog-next</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">App Router wrappers, route instrumentation</td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#8B8C8C] text-right font-medium">≤ 2 kB</td>
+                  <td class="py-2 px-4 text-right"><span class="inline-block px-2.5 py-0.5 rounded-full bg-white border border-[#BFBFC0] text-[#8B8C8C] font-label-sm text-label-sm uppercase font-bold tracking-wider">planned</span></td>
+                </tr>
+                <tr class="table-row-hover hover:bg-[#FFE700]/[0.08] transition-colors h-11">
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#2D2A29] font-bold">moelog.min.js</td>
+                  <td class="py-2 px-4 text-[#2D2A29]">Async loader with a pre-hydration queue</td>
+                  <td class="py-2 px-4 font-code-md text-code-md text-[#8B8C8C] text-right font-medium">≤ 600 B</td>
+                  <td class="py-2 px-4 text-right"><span class="inline-block px-2.5 py-0.5 rounded-full bg-white border border-[#BFBFC0] text-[#8B8C8C] font-label-sm text-label-sm uppercase font-bold tracking-wider">planned</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="relative font-body-sm text-[13px] text-[#8B8C8C] mt-4">A feature that does not fit does not ship. It becomes an optional package.</p>
+        </section>
+
+        <!-- 8. PRINCIPLES -->
+        <section class="w-full py-16 border-b border-[#BFBFC0]">
+          <div class="flex flex-col space-y-2 mb-10">
+            <span class="font-label-md text-label-md tracking-[0.12em] text-[#8B8C8C] uppercase">NON-NEGOTIABLE</span>
+            <h2 class="font-headline-lg text-[32px] text-[#2D2A29] font-bold tracking-tight">Six rules the code is held to.</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="border border-[#BFBFC0] rounded-[4px] p-6 bg-white flex flex-col justify-between technical-card-hover cursor-default">
+              <div><div class="font-code-md text-headline-lg text-[#FFE700] font-bold mb-2">01</div><h3 class="font-headline-md text-headline-md text-[#2D2A29] font-bold mb-2">Budget before features.</h3></div>
+              <p class="font-body-md text-body-md text-[#2D2A29]/80">Every package has a byte limit checked in CI.</p>
+            </div>
+            <div class="border border-[#BFBFC0] rounded-[4px] p-6 bg-white flex flex-col justify-between technical-card-hover cursor-default">
+              <div><div class="font-code-md text-headline-lg text-[#FFE700] font-bold mb-2">02</div><h3 class="font-headline-md text-headline-md text-[#2D2A29] font-bold mb-2">Zero runtime dependencies.</h3></div>
+              <p class="font-body-md text-body-md text-[#2D2A29]/80">Not one, in any published package, ever.</p>
+            </div>
+            <div class="border border-[#BFBFC0] rounded-[4px] p-6 bg-white flex flex-col justify-between technical-card-hover cursor-default">
+              <div><div class="font-code-md text-headline-lg text-[#FFE700] font-bold mb-2">03</div><h3 class="font-headline-md text-headline-md text-[#2D2A29] font-bold mb-2">The main thread is sacred.</h3></div>
+              <p class="font-body-md text-body-md text-[#2D2A29]/80">Capture is validate plus push. Nothing else.</p>
+            </div>
+            <div class="border border-[#BFBFC0] rounded-[4px] p-6 bg-white flex flex-col justify-between technical-card-hover cursor-default">
+              <div><div class="font-code-md text-headline-lg text-[#FFE700] font-bold mb-2">04</div><h3 class="font-headline-md text-headline-md text-[#2D2A29] font-bold mb-2">Fail silently.</h3></div>
+              <p class="font-body-md text-body-md text-[#2D2A29]/80">No throw ever escapes the SDK. If MoeLog breaks, your app never finds out.</p>
+            </div>
+            <div class="border border-[#BFBFC0] rounded-[4px] p-6 bg-white flex flex-col justify-between technical-card-hover cursor-default">
+              <div><div class="font-code-md text-headline-lg text-[#FFE700] font-bold mb-2">05</div><h3 class="font-headline-md text-headline-md text-[#2D2A29] font-bold mb-2">No PII by default.</h3></div>
+              <p class="font-body-md text-body-md text-[#2D2A29]/80">Nothing identifiable is collected unless you declare it explicitly.</p>
+            </div>
+            <div class="border border-[#BFBFC0] rounded-[4px] p-6 bg-white flex flex-col justify-between technical-card-hover cursor-default">
+              <div><div class="font-code-md text-headline-lg text-[#FFE700] font-bold mb-2">06</div><h3 class="font-headline-md text-headline-md text-[#2D2A29] font-bold mb-2">The protocol is the product.</h3></div>
+              <p class="font-body-md text-body-md text-[#2D2A29]/80">The spec is the reference, not the JavaScript implementation.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. SELF-HOSTING -->
+        <section class="w-full py-16 border-b border-[#BFBFC0]">
+          <div class="flex flex-col space-y-2 mb-10">
+            <span class="font-label-md text-label-md tracking-[0.12em] text-[#8B8C8C] uppercase">自己ホスト · SELF-HOSTED</span>
+            <h2 class="font-headline-lg text-[32px] text-[#2D2A29] font-bold tracking-tight">Clone it, point it at Postgres, deploy it.</h2>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-8 flex flex-col space-y-6">
+              <div class="flex flex-col space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="font-headline-sm text-headline-sm font-bold text-[#FFE700] bg-[#2D2A29] w-6 h-6 flex items-center justify-center rounded-[2px]">1</span>
+                  <span class="font-headline-sm text-headline-sm text-[#2D2A29] font-bold">Clone the server</span>
+                </div>
+                <div class="bg-[#2D2A29] p-3 rounded-[2px] text-white font-code-md text-code-md overflow-x-auto technical-card-hover">
+                  <code>git clone https://github.com/Moe-Corp/MoeLog.server</code>
+                </div>
+              </div>
+              <div class="flex flex-col space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="font-headline-sm text-headline-sm font-bold text-[#FFE700] bg-[#2D2A29] w-6 h-6 flex items-center justify-center rounded-[2px]">2</span>
+                  <span class="font-headline-sm text-headline-sm text-[#2D2A29] font-bold">Point it at a database</span>
+                </div>
+                <div class="bg-[#2D2A29] p-3 rounded-[2px] text-white font-code-md text-code-md overflow-x-auto technical-card-hover">
+                  <code>DATABASE_URL=postgres://… bun run migrate</code>
+                </div>
+              </div>
+              <div class="flex flex-col space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="font-headline-sm text-headline-sm font-bold text-[#FFE700] bg-[#2D2A29] w-6 h-6 flex items-center justify-center rounded-[2px]">3</span>
+                  <span class="font-headline-sm text-headline-sm text-[#2D2A29] font-bold">Deploy it anywhere</span>
+                </div>
+                <div class="bg-[#2D2A29] p-3 rounded-[2px] text-white font-code-md text-code-md overflow-x-auto technical-card-hover">
+                  <code>vercel deploy  # or fly, railway, a VPS, your laptop</code>
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-4 p-6 bg-[#2D2A29]/[0.03] border border-[#BFBFC0] rounded-[2px] technical-card-hover">
+              <p class="font-body-md text-[15px] leading-relaxed text-[#2D2A29]">
+                Umami did this for analytics. MoeLog does it for logs and errors. If you can run a Node process and a Postgres database, you can run your own observability stack, and nobody bills you per event.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. COMPARISON TEASER -->
+        <section class="w-full py-16 border-b border-[#BFBFC0]">
+          <div class="flex flex-col space-y-2 mb-8">
+            <h2 class="font-headline-lg text-[32px] text-[#2D2A29] font-bold tracking-tight">Where it stands.</h2>
+          </div>
+          <div class="w-full overflow-x-auto border-t-2 border-[#2D2A29]">
+            <table class="w-full text-left border-collapse min-w-[600px]">
+              <thead>
+                <tr class="border-b border-[#BFBFC0] bg-white">
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#8B8C8C] uppercase w-1/4">CAPABILITY</th>
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#2D2A29] font-bold uppercase w-1/4 bg-[#FFE700]/[0.06]">MoeLog</th>
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#8B8C8C] uppercase w-1/4">Sentry</th>
+                  <th class="py-3 px-4 font-label-md text-label-md text-[#8B8C8C] uppercase w-1/4">SigNoz</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#BFBFC0] font-body-md text-body-md">
+                <tr class="h-12 table-row-hover">
+                  <td class="py-3 px-4 text-[#2D2A29]">Browser SDK, gzip</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#2D2A29] font-bold bg-[#FFE700]/[0.06]">1.5–3 kB</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#8B8C8C]">25–90 kB</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#8B8C8C]">n/a</td>
+                </tr>
+                <tr class="h-12 table-row-hover">
+                  <td class="py-3 px-4 text-[#2D2A29]">Reports SIGKILL and OOM</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#2D2A29] font-bold bg-[#FFE700]/[0.06]">yes</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#8B8C8C]">no</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#8B8C8C]">no</td>
+                </tr>
+                <tr class="h-12 table-row-hover">
+                  <td class="py-3 px-4 text-[#2D2A29]">Self-host requirements</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#2D2A29] font-bold bg-[#FFE700]/[0.06]">Node + Postgres</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#8B8C8C]">many services</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#8B8C8C]">ClickHouse + 4 containers</td>
+                </tr>
+                <tr class="h-12 table-row-hover">
+                  <td class="py-3 px-4 text-[#2D2A29]">License</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#2D2A29] font-bold bg-[#FFE700]/[0.06]">AGPL-3.0</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#8B8C8C]">BSL / FSL</td>
+                  <td class="py-3 px-4 font-code-md text-code-md text-[#8B8C8C]">Apache-2.0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-6">
+            <a class="font-code-md text-code-md text-[#2D2A29] hover:underline font-bold inline-flex items-center gap-1 group" href="/compare">
+              <span>See the full comparison</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 11. HONEST SECTION -->
+        <section class="w-full py-16 border-b border-[#BFBFC0]">
+          <div class="bg-[#2D2A29]/[0.03] border border-[#BFBFC0] p-8 rounded-[2px] grid grid-cols-1 lg:grid-cols-12 gap-8 items-start technical-card-hover">
+            <div class="lg:col-span-5 flex flex-col justify-between h-full space-y-4">
+              <h2 class="font-headline-lg text-[28px] text-[#2D2A29] font-bold tracking-tight">It is alpha, and here is exactly where it is.</h2>
+              <p class="font-body-md text-body-md text-[#8B8C8C] leading-relaxed">
+                MoeLog is one person competing with Sentry. What makes it different is not the design budget — it is that it sees things the others cannot.
+              </p>
+            </div>
+            <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 md:border-l md:border-[#BFBFC0] md:pl-8">
+              <div class="flex flex-col space-y-2">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-2 h-2 rounded-full bg-[#A4CF58] anim-live-dot"></span>
+                  <span class="font-headline-sm text-headline-sm text-[#2D2A29] font-bold">Works today</span>
+                </div>
+                <p class="font-body-md text-body-md text-[#2D2A29] leading-relaxed">Node and Bun SDKs · the sidecar and all seven failure modes · ingest API · live dashboard · alerts · issue grouping by fingerprint · SQLite</p>
+              </div>
+              <div class="flex flex-col space-y-2">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-2 h-2 rounded-full bg-[#BFBFC0]"></span>
+                  <span class="font-headline-sm text-headline-sm text-[#8B8C8C] font-bold">Not yet</span>
+                </div>
+                <p class="font-body-md text-body-md text-[#8B8C8C] leading-relaxed">browser and edge packages · source-map upload CLI · read authentication · Postgres · the frozen MLWP v1 spec · ports to Python, Go and Rust</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 12. FINAL CTA BAND -->
+        <section class="relative w-full py-20 px-8 bg-[#FFE700] text-[#2D2A29] overflow-hidden my-12 rounded-[2px] border border-[#2D2A29]">
+          <div class="absolute inset-0 pointer-events-none kinetic-speed-lines" style="background-image: repeating-linear-gradient(90deg, rgba(45,42,41,0.12) 0px, rgba(45,42,41,0.12) 16px, transparent 16px, transparent 32px); background-size: 32px 100%;"></div>
+          <div class="relative max-w-4xl mx-auto flex flex-col items-center text-center space-y-8">
+            <h2 class="font-headline-xl text-[32px] md:text-[40px] leading-tight font-bold tracking-tight text-[#2D2A29]">Five minutes from npm i to a dashboard you own.</h2>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+              <a class="px-6 py-3 bg-[#2D2A29] text-white font-headline-sm text-headline-sm font-bold rounded-[2px] border border-[#2D2A29] hover:bg-[#454241] active:translate-x-px active:translate-y-px transition-all" href="/docs">Read the quickstart</a>
+              <a class="px-6 py-3 bg-transparent text-[#2D2A29] font-headline-sm text-headline-sm font-bold rounded-[2px] border border-[#2D2A29] hover:bg-[#2D2A29]/10 active:translate-x-px active:translate-y-px transition-all" href="https://github.com/Moe-Corp/MoeLog.js" rel="noreferrer" target="_blank">Star it on GitHub</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <Footer />
+  </main>
+</Layout>
+
+<style>
+  @keyframes flow-line {
+    0% { stroke-dashoffset: 24; }
+    100% { stroke-dashoffset: 0; }
+  }
+  @keyframes cursor-blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+  @keyframes live-pulse {
+    0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(255, 231, 0, 0.7); }
+    70% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 0 6px rgba(255, 231, 0, 0); }
+    100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(255, 231, 0, 0); }
+  }
+  @keyframes flow-bg {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 0; }
+  }
+  @keyframes log-fade-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .anim-terminal-cursor {
+    display: inline-block;
+    width: 7px;
+    height: 13px;
+    background-color: #ffe700;
+    vertical-align: middle;
+    animation: cursor-blink 1s steps(2, start) infinite;
+  }
+  .anim-live-dot {
+    animation: live-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  .pipeline-dash-flow {
+    stroke-dasharray: 4, 4;
+    animation: flow-line 1.2s linear infinite;
+  }
+  .kinetic-speed-lines {
+    animation: flow-bg 8s linear infinite;
+  }
+  .technical-card-hover {
+    transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .technical-card-hover:hover {
+    transform: translateX(2px);
+    border-color: #2d2a29;
+    box-shadow: -2px 0 0 #ffe700;
+  }
+  .table-row-hover {
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+  .table-row-hover:hover {
+    transform: translateX(2px);
+  }
+  .new-log-entry {
+    animation: log-fade-in 0.35s ease-out;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .anim-terminal-cursor,
+    .anim-live-dot,
+    .pipeline-dash-flow,
+    .kinetic-speed-lines,
+    .technical-card-hover,
+    .technical-card-hover:hover,
+    .table-row-hover,
+    .table-row-hover:hover,
+    .new-log-entry {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  const traces = [
+    { type: "app.crashed", app: "checkout-api", runtime: "node@22.3.0", release: "1.4.2", pid: 48211, signal: "SIGKILL", heartbeat: 1840, fingerprint: "a7f3c901" },
+    { type: "app.fatal", app: "auth-service", runtime: "node@22.3.0", release: "2.1.0", pid: 39120, signal: "SIGABRT", heartbeat: 410, fingerprint: "c8e2194b" },
+    { type: "app.blocked", app: "worker-queue", runtime: "bun@1.1.20", release: "1.0.8", pid: 51094, signal: "EVENT_LOOP_STALL", heartbeat: 6240, fingerprint: "e102f98a" },
+    { type: "app.recovered", app: "worker-queue", runtime: "bun@1.1.20", release: "1.0.8", pid: 51094, signal: "STALL_CLEARED", heartbeat: 24, fingerprint: "e102f98a" }
+  ];
+
+  let traceIndex = 0;
+
+  function formatTimestamp() {
+    const d = new Date();
+    const pad = (n) => String(n).padStart(2, "0");
+    return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  }
+
+  function renderTrace(trace) {
+    const container = document.getElementById("ndjson-trace");
+    const badge = document.getElementById("terminal-badge");
+    if (!container || !badge) return;
+
+    badge.textContent = `sidecar · alert emitted ${formatTimestamp()}`;
+    container.className = "new-log-entry";
+
+    container.innerHTML = `
+      <div>{<span class="text-[#187384]">"type"</span>:<span class="text-[#FFE700]">"${trace.type}"</span>,<span class="text-[#187384]">"app"</span>:<span class="text-[#cbc5c3]">"${trace.app}"</span>,</div>
+      <div class="pl-2"><span class="text-[#187384]">"runtime"</span>:<span class="text-[#cbc5c3]">"${trace.runtime}"</span>,<span class="text-[#187384]">"release"</span>:<span class="text-[#cbc5c3]">"${trace.release}"</span>,</div>
+      <div class="pl-2"><span class="text-[#187384]">"pid"</span>:<span class="text-[#cbc5c3]">${trace.pid}</span>,<span class="text-[#187384]">"signal"</span>:<span class="text-[#FFE700]">"${trace.signal}"</span>,</div>
+      <div class="pl-2"><span class="text-[#187384]">"last_heartbeat_ms_ago"</span>:<span class="text-[#cbc5c3]">${trace.heartbeat}</span>,</div>
+      <div class="pl-2"><span class="text-[#187384]">"fingerprint"</span>:<span class="text-[#187384]">"${trace.fingerprint}"</span>}</div>
+    `;
+
+    setTimeout(() => {
+      container.classList.remove("new-log-entry");
+    }, 400);
+  }
+
+  function cycleTraceLog() {
+    traceIndex = (traceIndex + 1) % traces.length;
+    renderTrace(traces[traceIndex]);
+  }
+
+  function setTerminalTrace(type, app, signal, heartbeat) {
+    const customTrace = {
+      type,
+      app,
+      runtime: "node@22.3.0",
+      release: "1.4.2",
+      pid: Math.floor(10000 + Math.random() * 89999),
+      signal,
+      heartbeat,
+      fingerprint: Math.random().toString(16).substring(2, 10)
+    };
+    renderTrace(customTrace);
+
+    const term = document.getElementById("terminal-badge");
+    if (term && window.scrollY > 500) {
+      term.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  const runtimeCommands = {
+    node: { cmd: "npm i @moecorp/moelog-node @moecorp/moelog-sidecar", size: "0.95 kB core" },
+    bun: { cmd: "bun add @moecorp/moelog-bun @moecorp/moelog-sidecar", size: "1.3 kB core" },
+    deno: { cmd: "deno add npm:@moecorp/moelog-core", size: "1.5 kB core" },
+    browser: { cmd: "npm i @moecorp/moelog-browser", size: "≤ 3 kB core" },
+    edge: { cmd: "npm i @moecorp/moelog-edge", size: "≤ 2 kB core" }
+  };
+
+  let activeRuntime = "node";
+
+  function selectRuntime(runtime, btn) {
+    activeRuntime = runtime;
+    const container = document.getElementById("install-runtime-tabs");
+    if (container) {
+      const buttons = container.querySelectorAll("button");
+      buttons.forEach((b) => {
+        b.className = "hover:text-white pb-1";
+      });
+    }
+    btn.className = "text-[#FFE700] border-b-2 border-[#FFE700] pb-1 font-bold";
+
+    const info = runtimeCommands[runtime] || runtimeCommands.node;
+    const cmdSpan = document.getElementById("install-command");
+    if (cmdSpan) {
+      cmdSpan.innerHTML = `<span class="text-[#FFE700]">$</span> ${info.cmd}`;
+      const nextBadge = cmdSpan.nextElementSibling;
+      if (nextBadge) nextBadge.textContent = info.size;
+    }
+  }
+
+  function copyInstallCmd() {
+    const current = runtimeCommands[activeRuntime] || runtimeCommands.node;
+    navigator.clipboard.writeText(current.cmd).then(() => {
+      const btn = document.getElementById("copy-btn");
+      const icon = document.getElementById("copy-icon");
+      const label = document.getElementById("copy-label");
+
+      if (btn && icon && label) {
+        icon.textContent = "check";
+        label.textContent = "COPIED // " + current.size.split(" ")[0];
+        btn.classList.add("text-[#FFE700]");
+
+        setTimeout(() => {
+          icon.textContent = "content_copy";
+          label.textContent = "copy";
+          btn.classList.remove("text-[#FFE700]");
+        }, 2000);
+      }
+    });
+  }
+
+  setInterval(() => {
+    const heartbeats = [120, 240, 480, 890, 1840, 2100];
+    const randHeartbeat = heartbeats[Math.floor(Math.random() * heartbeats.length)];
+    const hbEl = document.querySelector("#ndjson-trace div:nth-child(4) span:nth-child(2)");
+    if (hbEl) {
+      hbEl.textContent = randHeartbeat;
+    }
+  }, 4500);
+</script>

@@ -1,0 +1,317 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import isotipoNegativo from "../image/brand/isotipo-negativo.svg";
+---
+
+<Layout title="MoeLog — Nothing is listening on this route." description="The page is gone, renamed, or never existed. Unlike your production process, it did not leave a crash marker.">
+  <Header />
+  <main class="w-full pt-24 bg-surface">
+    <div class="flex flex-col w-full">
+      <div class="w-full max-w-[1200px] mx-auto px-6 py-16 flex flex-col gap-24">
+        <!-- SCREEN A: 404 (ROUTE NOT FOUND) -->
+        <section class="relative w-full flex flex-col items-center text-center">
+          <div class="absolute inset-0 pointer-events-none flex justify-center items-center opacity-[0.03]">
+            <svg class="w-full h-full max-w-4xl" fill="none" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern height="32" id="grid-pattern-404" patternUnits="userSpaceOnUse" width="32">
+                  <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#2D2A29" stroke-width="1"></path>
+                </pattern>
+              </defs>
+              <rect fill="url(#grid-pattern-404)" height="100%" width="100%"></rect>
+            </svg>
+          </div>
+          <div class="hidden lg:flex flex-col items-center absolute -left-4 top-1/2 -translate-y-1/2 select-none pointer-events-none opacity-40">
+            <span class="font-code-md text-label-sm text-secondary uppercase tracking-[0.25em] [writing-mode:vertical-rl]">経路喪失 · HTTP 404 STATUS</span>
+            <div class="w-px h-16 bg-surface-container-highest mt-3"></div>
+          </div>
+          <!-- Speed Silhouette Mascot Graphic -->
+          <div class="relative w-[280px] h-[180px] flex items-center justify-center mb-6">
+            <svg class="absolute inset-0 w-full h-full anim-speed-lines" fill="none" viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+              <line class="anim-speed-dash" stroke="#FFE700" stroke-linecap="square" stroke-width="6" x1="12" x2="110" y1="58"></line>
+              <line class="anim-speed-dash" stroke="#FFE700" stroke-linecap="square" stroke-width="6" x1="28" x2="94" y1="92"></line>
+              <line class="anim-speed-dash" stroke="#FFE700" stroke-linecap="square" stroke-width="6" x1="2" x2="124" y1="126"></line>
+              <line class="anim-speed-dash" stroke="#FFE700" stroke-dasharray="8 6" stroke-width="2" x1="40" x2="160" y1="42"></line>
+              <line class="anim-speed-dash" stroke="#FFE700" stroke-dasharray="12 4" stroke-width="2" x1="18" x2="148" y1="144"></line>
+              <line stroke="#FFE700" stroke-width="1.5" x1="68" x2="182" y1="74"></line>
+            </svg>
+            <svg class="relative z-10 w-[170px] h-[170px]" fill="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <rect fill="#1a1c1c" height="8.5" rx="1" width="18" x="2" y="27"></rect>
+              <rect fill="#1a1c1c" height="8.5" rx="1" width="16" x="1" y="42"></rect>
+              <rect fill="#1a1c1c" height="8.5" rx="1" width="16" x="5" y="57"></rect>
+              <path clip-rule="evenodd" d="M49 19.5C35.2 19.5 24 30.7 24 44.5C24 53.6 28.8 61.5 36.1 66L31 82.5L44 82.5L48 70C61.3 69.5 72 58.2 72 44.5C72 30.7 61.7 19.5 49 19.5ZM43 45C43 48.3 45.7 51 49 51C52.3 51 55 48.3 55 45C55 43.6 54.5 42.4 53.7 41.4C52.4 44.2 49.5 46.2 46.2 46.2C44.7 46.2 43.3 45.7 42.2 44.8C42.7 44.9 43 45 43 45Z" fill="#1a1c1c" fill-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div class="relative inline-flex items-center gap-2 mb-3 overflow-hidden px-2 py-0.5 rounded-[2px]">
+            <span class="inline-flex items-center justify-center px-2 py-0.5 bg-inverse-surface text-surface-container-lowest font-headline-sm text-headline-sm tracking-[0.14em] rounded-[2px]">404</span>
+            <span class="font-code-md text-code-md text-secondary tracking-widest uppercase">NOT_FOUND // PORT UNBOUND</span>
+            <div class="pointer-events-none absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-primary-container/25 to-transparent anim-scanline"></div>
+          </div>
+          <h1 class="font-headline-xl text-headline-xl text-on-surface max-w-2xl font-bold tracking-tight">Nothing is listening on this route.</h1>
+          <p class="font-body-lg text-body-lg text-secondary max-w-xl mx-auto mt-4 leading-relaxed">
+            The page is gone, renamed, or never existed. Unlike your production process, it did not leave a crash marker.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+            <a class="inline-flex items-center justify-center px-6 py-3.5 bg-primary-container text-on-primary-fixed font-headline-sm text-headline-sm rounded-lg hover:bg-primary-fixed-dim hover:translate-x-0.5 active:translate-x-px active:translate-y-px transition-all duration-150 border border-on-surface group" href="/">
+              <span>Back to the home page</span>
+              <span class="material-symbols-outlined text-[16px] ml-1 transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+            </a>
+            <a class="inline-flex items-center justify-center px-6 py-3.5 bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm rounded-lg hover:bg-surface-container-low hover:translate-x-0.5 active:translate-x-px active:translate-y-px transition-all duration-150 border border-surface-container-highest group" href="/docs">
+              <span>Search the docs</span>
+              <span class="material-symbols-outlined text-[16px] ml-1 text-secondary transition-transform group-hover:translate-x-0.5">search</span>
+            </a>
+          </div>
+          <div class="mt-12 flex items-center gap-6 font-code-md text-code-md text-secondary border-t border-surface-container-highest pt-4 w-full max-w-md justify-between">
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary anim-daemon-beacon"></span>DAEMON: IDLE</span>
+            <span>CODE: 0x7F_ROUTE_VOID</span>
+            <span class="text-on-surface font-bold">ACK: NIL</span>
+          </div>
+        </section>
+
+        <!-- SECTION DELIMITER & EDITORIAL HEADER -->
+        <div class="w-full flex items-center justify-between gap-4 pt-8">
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 bg-on-surface"></span>
+            <span class="font-headline-sm text-headline-sm text-on-surface tracking-wider uppercase">INSPECTION // DASHBOARD PREVIEW: EMPTY STATE</span>
+          </div>
+          <div class="h-px flex-1 bg-surface-container-highest"></div>
+          <span class="font-code-md text-code-md text-secondary uppercase tracking-widest hidden sm:inline-block">ENV: LOCALHOST:4318</span>
+        </div>
+
+        <!-- SCREEN B: EMPTY DASHBOARD STATE CARD -->
+        <section class="w-full flex flex-col items-center">
+          <div class="w-full max-w-2xl bg-surface-container-lowest border border-surface-container-highest rounded-lg p-10 text-center relative overflow-hidden transition-all duration-300" id="dashboard-preview-card">
+            <div class="absolute top-0 left-0 right-0 h-1 bg-surface-container-highest flex">
+              <div class="w-24 h-full bg-primary-container transition-all duration-500 ease-out" id="precision-progress-bar"></div>
+            </div>
+            <div class="absolute top-4 right-4 w-8 h-8 rounded-full border border-surface-container-highest flex items-center justify-center text-secondary font-headline-sm text-headline-sm select-none transition-colors" id="hanko-stamp" title="Monitoring State: Standby">監</div>
+            <div class="flex justify-center mt-2 mb-4">
+              <svg class="w-16 h-16 opacity-75 transition-transform duration-300" fill="none" id="card-mascot" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect fill="#BFBFC0" height="7.5" rx="1" width="14" x="8" y="29"></rect>
+                <rect fill="#BFBFC0" height="7.5" rx="1" width="12" x="7" y="43"></rect>
+                <rect fill="#BFBFC0" height="7.5" rx="1" width="12" x="10" y="57"></rect>
+                <path clip-rule="evenodd" d="M50 20C36.8 20 26 30.8 26 44C26 52.8 30.7 60.5 37.7 64.7L33 80.5L45.5 80.5L49.2 68.6C61.8 68.1 72 57.3 72 44C72 30.8 62.1 20 50 20ZM44.2 44.5C44.2 47.6 46.8 50.2 50 50.2C53.2 50.2 55.8 47.6 55.8 44.5C55.8 43.1 55.3 42 54.5 41C53.3 43.7 50.5 45.6 47.3 45.6C45.9 45.6 44.5 45.1 43.5 44.3C43.9 44.4 44.2 44.5 44.2 44.5Z" fill="#BFBFC0" fill-rule="evenodd"></path>
+              </svg>
+            </div>
+            <p class="font-headline-sm text-headline-sm text-secondary uppercase tracking-[0.18em]" id="dashboard-title-label">NO EVENTS YET</p>
+            <p class="font-body-md text-body-md text-on-surface max-w-md mx-auto mt-2 leading-relaxed">
+              Your sidecar is connected and nothing has broken. Send a test event to make sure the pipe works.
+            </p>
+            <div class="mt-6 inline-flex items-center justify-between gap-3 bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-[2px] font-code-md text-code-md max-w-md w-full border border-inverse-surface cursor-pointer select-none transition-all hover:border-outline focus:outline-none focus:ring-1 focus:ring-primary-container" id="terminal-command-container" onclick="triggerTestEvent()" role="button" tabindex="0">
+              <div class="flex items-center gap-2 overflow-x-auto">
+                <span class="text-primary-container select-none">$</span>
+                <code class="text-surface-container-lowest tracking-tight" id="terminal-command">npx moelog test-event</code>
+              </div>
+              <button aria-label="Copy shell command" class="text-outline-variant hover:text-surface-container-lowest p-1 rounded transition-colors flex items-center" id="copy-btn" onclick="event.stopPropagation(); triggerTestEvent(true);" type="button">
+                <span class="material-symbols-outlined text-[16px]" id="copy-icon">content_copy</span>
+                <span class="font-label-sm text-label-sm ml-1 text-outline-variant" id="copy-label">COPY</span>
+              </button>
+            </div>
+            <div class="mt-8 pt-4 border-t border-surface-container-highest grid grid-cols-3 gap-2 text-left">
+              <div>
+                <span class="block font-label-sm text-label-sm text-secondary uppercase">Ingest Port</span>
+                <span class="font-code-md text-code-md text-on-surface font-semibold" id="port-status-val">:4318 / OTLP</span>
+              </div>
+              <div>
+                <span class="block font-label-sm text-label-sm text-secondary uppercase">Pipe State</span>
+                <span class="font-code-md text-code-md text-on-surface font-semibold flex items-center gap-1.5 relative" id="pipe-status-container">
+                  <span class="relative flex h-2 w-2 items-center justify-center">
+                    <span class="absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75 hidden" id="pipe-pulse-ring"></span>
+                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary-container border border-on-surface transition-colors" id="pipe-status-dot"></span>
+                  </span>
+                  <span id="pipe-status-text">AWAITING</span>
+                </span>
+              </div>
+              <div>
+                <span class="block font-label-sm text-label-sm text-secondary uppercase">Buffer</span>
+                <span class="font-code-md text-code-md text-on-surface font-semibold transition-colors duration-200" id="buffer-stat">0 / 64 MB</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- 404 page keeps its own distinct footer -->
+  <footer class="w-full bg-inverse-surface text-inverse-on-surface border-t border-secondary">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-10">
+        <div class="md:col-span-2 space-y-3">
+          <div class="flex items-center gap-space-sm">
+            <img alt="Moe Corp Logo Mark" class="h-7 w-auto object-contain" src={isotipoNegativo.src} width={isotipoNegativo.width} height={isotipoNegativo.height} />
+            <span class="font-headline-md text-headline-md tracking-tight text-surface-container-lowest">MoeLog</span>
+          </div>
+          <p class="font-code-md text-code-md text-outline-variant">可観測性 · observability, self-hosted</p>
+          <p class="font-body-sm text-body-sm text-surface-dim max-w-sm">Deterministic telemetry pipelines engineered for industrial resilience, single-binary isolation, and absolute data sovereignty.</p>
+        </div>
+        <div>
+          <h4 class="font-label-md text-label-md text-surface-container-lowest uppercase tracking-wider mb-3">Navigation</h4>
+          <ul class="space-y-2">
+            <li><a class="font-code-md text-code-md text-outline-variant hover:text-surface-container-lowest transition-colors" href="/docs">Docs</a></li>
+            <li><a class="font-code-md text-code-md text-outline-variant hover:text-surface-container-lowest transition-colors" href="#">Packages</a></li>
+            <li><a class="font-code-md text-code-md text-outline-variant hover:text-surface-container-lowest transition-colors" href="#">Self-host</a></li>
+            <li><a class="font-code-md text-code-md text-outline-variant hover:text-surface-container-lowest transition-colors" href="/compare">Compare</a></li>
+            <li><a class="font-code-md text-code-md text-outline-variant hover:text-surface-container-lowest transition-colors" href="/project">Project</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-label-md text-label-md text-surface-container-lowest uppercase tracking-wider mb-3">System</h4>
+          <ul class="space-y-2">
+            <li><a class="font-code-md text-code-md text-outline-variant hover:text-surface-container-lowest transition-colors" href="#">Empty State Demo</a></li>
+            <li><a class="font-code-md text-code-md text-outline-variant hover:text-surface-container-lowest transition-colors" href="#">404 Diagnostic</a></li>
+            <li><a class="font-code-md text-code-md text-outline-variant hover:text-surface-container-lowest transition-colors" href="https://github.com/Moe-Corp" rel="noopener noreferrer" target="_blank">GitHub Repository</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-label-md text-label-md text-surface-container-lowest uppercase tracking-wider mb-3">Seals &amp; Verification</h4>
+          <div class="flex flex-col gap-space-sm pt-1">
+            <div class="flex items-center gap-space-sm">
+              <div class="w-7 h-7 rounded-full border border-tertiary flex items-center justify-center text-tertiary-fixed font-label-sm text-label-sm">AGPL</div>
+              <span class="font-code-md text-code-md text-outline-variant">AGPL-3.0 License</span>
+            </div>
+            <div class="flex items-center gap-space-sm">
+              <div class="w-7 h-7 rounded-full border border-primary-container flex items-center justify-center text-primary-container font-label-sm text-label-sm">α0.2</div>
+              <span class="font-code-md text-code-md text-outline-variant">v0.0.2-alpha</span>
+            </div>
+            <div class="flex items-center gap-space-sm">
+              <div class="w-7 h-7 rounded-full border border-outline-variant flex items-center justify-center text-outline-variant font-label-sm text-label-sm">0-DP</div>
+              <span class="font-code-md text-code-md text-outline-variant">0 dependencies</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-secondary flex flex-col md:flex-row items-center justify-between gap-space-md">
+        <div class="font-code-md text-code-md text-outline-variant">© 2024 Moe Corp. Strictly deterministic telemetry. All rights reserved.</div>
+        <div class="flex items-center gap-space-md">
+          <span class="font-code-md text-code-md text-surface-dim">MLWP SPEC v1</span>
+          <div class="h-3 w-px bg-secondary"></div>
+          <span class="font-code-md text-code-md text-surface-dim">TOKYO / DISTRIBUTED</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  @keyframes speedLinesTranslate {
+    0% { transform: translate(14px, -7px); opacity: 0; }
+    25% { opacity: 0.95; }
+    75% { opacity: 0.95; }
+    100% { transform: translate(-22px, 11px); opacity: 0; }
+  }
+  @keyframes speedLinesDash {
+    0% { stroke-dashoffset: 40; }
+    100% { stroke-dashoffset: -40; }
+  }
+  @keyframes scanlineSweep {
+    0% { transform: translateX(-100%); }
+    60%, 100% { transform: translateX(240%); }
+  }
+  @keyframes daemonHeartbeat {
+    0%, 100% { opacity: 0.35; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+  @keyframes pingGentle {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2.4); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .anim-speed-lines {
+      animation: speedLinesTranslate 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .anim-speed-dash {
+      animation: speedLinesDash 1.4s linear infinite;
+    }
+    .anim-scanline {
+      animation: scanlineSweep 4.5s ease-in-out infinite;
+    }
+    .anim-daemon-beacon {
+      animation: daemonHeartbeat 3s ease-in-out infinite;
+    }
+    .anim-ping-gentle {
+      animation: pingGentle 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+  }
+</style>
+
+<script is:inline>
+  let isSimulating = false;
+  function triggerTestEvent(isExplicitCopy) {
+    navigator.clipboard.writeText("npx moelog test-event");
+    const copyLabel = document.getElementById("copy-label");
+    const copyIcon = document.getElementById("copy-icon");
+    if (copyLabel) copyLabel.innerText = "COPIED";
+    if (copyIcon) copyIcon.innerText = "check";
+
+    setTimeout(() => {
+      if (copyLabel) copyLabel.innerText = "COPY";
+      if (copyIcon) copyIcon.innerText = "content_copy";
+    }, 2200);
+
+    if (isSimulating) return;
+    isSimulating = true;
+
+    const card = document.getElementById("dashboard-preview-card");
+    const progressBar = document.getElementById("precision-progress-bar");
+    const pipeDot = document.getElementById("pipe-status-dot");
+    const pipePulse = document.getElementById("pipe-pulse-ring");
+    const pipeText = document.getElementById("pipe-status-text");
+    const bufferStat = document.getElementById("buffer-stat");
+    const hankoStamp = document.getElementById("hanko-stamp");
+
+    if (card) card.classList.add("border-primary", "shadow-sm");
+    if (progressBar) {
+      progressBar.classList.remove("w-24");
+      progressBar.classList.add("w-full");
+    }
+    if (hankoStamp) hankoStamp.classList.add("border-primary-container", "text-primary");
+
+    if (pipeDot) {
+      pipeDot.classList.remove("bg-primary-container");
+      pipeDot.classList.add("bg-tertiary");
+    }
+    if (pipePulse) {
+      pipePulse.classList.remove("hidden");
+      pipePulse.classList.add("anim-ping-gentle");
+    }
+    if (pipeText) {
+      pipeText.innerText = "STREAMING";
+      pipeText.classList.add("text-primary");
+    }
+
+    let counter = 0;
+    const bufferInterval = setInterval(() => {
+      counter += 0.2;
+      if (counter >= 1.2) {
+        clearInterval(bufferInterval);
+        if (bufferStat) bufferStat.innerText = "1.2 / 64 MB";
+      } else {
+        if (bufferStat) bufferStat.innerText = counter.toFixed(1) + " / 64 MB";
+      }
+    }, 60);
+
+    setTimeout(() => {
+      if (card) card.classList.remove("border-primary", "shadow-sm");
+      if (progressBar) {
+        progressBar.classList.remove("w-full");
+        progressBar.classList.add("w-24");
+      }
+      if (hankoStamp) hankoStamp.classList.remove("border-primary-container", "text-primary");
+      if (pipeDot) {
+        pipeDot.classList.remove("bg-tertiary");
+        pipeDot.classList.add("bg-primary-container");
+      }
+      if (pipePulse) {
+        pipePulse.classList.add("hidden");
+        pipePulse.classList.remove("anim-ping-gentle");
+      }
+      if (pipeText) {
+        pipeText.innerText = "AWAITING";
+        pipeText.classList.remove("text-primary");
+      }
+      if (bufferStat) bufferStat.innerText = "0 / 64 MB";
+      isSimulating = false;
+    }, 3200);
+  }
+</script>

@@ -1,0 +1,81 @@
+---
+import isotipo from "../image/brand/isotipo.svg";
+
+interface Props {
+  currentPath?: "project" | "compare" | "docs";
+}
+
+const { currentPath } = Astro.props;
+
+const navLinks = [
+  { key: "docs", label: "Docs", href: "/docs" },
+  { key: "packages", label: "Packages", href: "#" },
+  { key: "self-host", label: "Self-host", href: "#" },
+  { key: "compare", label: "Compare", href: "/compare" },
+  { key: "project", label: "Project", href: "/project" },
+] as const;
+
+const activeClasses =
+  "h-16 flex items-center px-1 font-label-md text-label-md transition-colors border-b-[3px] text-on-surface border-primary-container font-bold";
+const inactiveClasses =
+  "h-16 flex items-center px-1 font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors border-b-[3px] border-transparent";
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 w-full bg-surface-container-lowest border-b border-surface-container-highest">
+  <div class="h-16 w-full px-6 flex items-center justify-between">
+    <div class="flex items-center gap-space-sm">
+      <img alt="Moe Corp Logo Mark" class="h-8 w-auto object-contain" src={isotipo.src} width={isotipo.width} height={isotipo.height} />
+      <span class="font-headline-md text-headline-md tracking-tight text-on-surface">MoeLog</span>
+      <div class="h-4 w-px bg-surface-container-highest"></div>
+      <span class="font-label-md text-label-md text-secondary uppercase">by Moe Corp</span>
+    </div>
+    <nav class="hidden md:flex items-center h-16 gap-8">
+      {navLinks.map((link) => (
+        <a
+          class={link.key === currentPath ? activeClasses : inactiveClasses}
+          href={link.href}
+          aria-current={link.key === currentPath ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <div class="flex items-center gap-space-md">
+      <button id="theme-toggle" aria-label="Toggle System Theme" class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+        <span class="material-symbols-outlined text-[20px]">contrast</span>
+      </button>
+      <a class="flex items-center gap-space-xs px-space-sm py-1 border border-surface-container-highest rounded-lg font-code-md text-code-md text-on-surface hover:bg-surface-container transition-colors" href="#">
+        <span class="material-symbols-outlined text-[16px]">star</span>
+        <span>★ 0</span>
+      </a>
+      <a class="px-space-md py-1.5 bg-primary-container text-on-primary-fixed font-headline-sm text-headline-sm rounded-lg border border-on-surface hover:bg-primary-fixed-dim transition-transform active:translate-x-px active:translate-y-px" href="/docs">
+        Quickstart
+      </a>
+      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+        <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+      </div>
+    </div>
+  </div>
+  <div class="h-8 w-full bg-inverse-surface flex items-center justify-center px-4">
+    <p class="font-code-md text-code-md text-inverse-on-surface text-center tracking-tight">v0.0.2-alpha — MLWP v1 is not frozen yet. Run it on your own things first.</p>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    const root = document.documentElement;
+    const stored = localStorage.getItem("moelog-theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = stored ? stored === "dark" : prefersDark;
+    root.classList.toggle("dark", isDark);
+
+    const toggleBtn = document.getElementById("theme-toggle");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        const next = !root.classList.contains("dark");
+        root.classList.toggle("dark", next);
+        localStorage.setItem("moelog-theme", next ? "dark" : "light");
+      });
+    }
+  })();
+</script>

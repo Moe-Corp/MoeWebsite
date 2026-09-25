@@ -1,0 +1,59 @@
+---
+// Shared "brand-compliant" dark footer (bg #2D2A29): brand block, 4-column
+// link grid and hanko seal badges. Used once per page on index/project/compare
+// — docs.astro and 404.astro each ship their own distinct footer per spec.
+import isotipoNegativo from "../image/brand/isotipo-negativo.svg";
+---
+
+<footer class="w-full py-16 bg-[#2D2A29] text-white">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      <!-- Logo & Tagline (4 cols) -->
+      <div class="md:col-span-4 flex flex-col space-y-4">
+        <div class="flex items-center gap-3">
+          <img alt="Moe Corp Logo Mark" class="w-8 h-8 object-contain" src={isotipoNegativo.src} width={isotipoNegativo.width} height={isotipoNegativo.height} />
+          <span class="font-headline-md text-headline-md font-bold tracking-tight text-white">MoeLog</span>
+        </div>
+        <p class="font-label-md text-label-md text-[#8B8C8C] tracking-wide">可観測性 · observability, self-hosted</p>
+      </div>
+      <!-- 4 Link Columns (8 cols) -->
+      <div class="md:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <div class="flex flex-col space-y-3">
+          <span class="font-label-md text-label-md text-[#FFE700] uppercase font-bold tracking-wider">Product</span>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="#">Packages</a>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="#">Self-host</a>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="/compare">Compare</a>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="#">Status</a>
+        </div>
+        <div class="flex flex-col space-y-3">
+          <span class="font-label-md text-label-md text-[#FFE700] uppercase font-bold tracking-wider">Docs</span>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="/docs">Quickstart</a>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="#">Node</a>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="#">Sidecar</a>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="#">MLWP spec</a>
+        </div>
+        <div class="flex flex-col space-y-3">
+          <span class="font-label-md text-label-md text-[#FFE700] uppercase font-bold tracking-wider">Project</span>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="https://github.com/Moe-Corp" rel="noopener noreferrer" target="_blank">GitHub</a>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="/project">Roadmap</a>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="/project">License</a>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="/project">Contributing</a>
+        </div>
+        <div class="flex flex-col space-y-3">
+          <span class="font-label-md text-label-md text-[#FFE700] uppercase font-bold tracking-wider">Moe Corp</span>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="https://moecorp.org" rel="noopener noreferrer" target="_blank">moecorp.org</a>
+          <a class="font-body-sm text-body-sm text-[#cbc5c3] hover:text-white transition-colors" href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom Bar with Hanko Badges -->
+    <div class="border-t border-white/15 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="font-code-md text-code-md text-[#8B8C8C]">AGPL-3.0 · © 2026 Moe Corp · moelog.moecorp.org</div>
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full border border-[#8B8C8C] flex items-center justify-center text-[10px] font-code-md text-[#8B8C8C] uppercase tracking-tighter" title="AGPL License Stamp">AGPL</div>
+        <div class="px-2 h-8 rounded-full border border-[#FFE700] flex items-center justify-center text-[10px] font-code-md text-[#FFE700] tracking-tighter" title="Alpha Version Stamp">α-0.0.2</div>
+        <div class="w-8 h-8 rounded-full border border-[#8B8C8C] flex items-center justify-center text-[10px] font-code-md text-[#8B8C8C] uppercase tracking-tighter" title="Zero Dependencies Stamp">0-DEP</div>
+      </div>
+    </div>
+  </div>
+</footer>

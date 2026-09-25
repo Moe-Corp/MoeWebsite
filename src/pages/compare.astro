@@ -1,0 +1,266 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="MoeLog — Honest Comparison & Licensing" description="MoeLog does not win on features. It wins on bytes, on setup cost, and on being able to report the failures that happen after your process is already gone.">
+  <Header currentPath="compare" />
+  <main class="w-full pt-24 bg-surface">
+    <div class="flex flex-col w-full">
+      <div class="w-full flex justify-center px-4 md:px-gutter-desktop py-space-xl">
+        <div class="w-full max-w-[1200px] flex flex-col gap-16">
+          <!-- SECTION 1: HEADER -->
+          <section class="flex flex-col gap-space-sm pt-4">
+            <div class="flex items-center gap-space-sm">
+              <span class="inline-block w-2.5 h-2.5 bg-primary-container"></span>
+              <span class="font-label-md text-label-md text-secondary tracking-widest uppercase">Benchmark &amp; Terms // MLWP-01</span>
+            </div>
+            <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Honest comparison.</h1>
+            <p class="font-body-lg text-body-lg text-secondary max-w-3xl leading-relaxed">
+              MoeLog does not win on features. It wins on bytes, on setup cost, and on being able to report the failures that happen after your process is already gone.
+            </p>
+          </section>
+
+          <!-- SECTION 2: THE BIG TABLE -->
+          <section class="flex flex-col w-full">
+            <div class="bg-surface-container-lowest overflow-x-auto shadow-sm">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="bg-surface-container-low">
+                    <th class="p-space-md font-headline-sm text-headline-sm text-secondary tracking-wider uppercase w-1/4">Metric / Dimension</th>
+                    <th class="p-space-md w-1/4 bg-primary-container/20">
+                      <div class="flex items-center justify-between">
+                        <span class="font-headline-md text-headline-md text-on-surface">MoeLog</span>
+                        <span class="px-space-xs py-0.5 bg-primary-container text-on-primary-fixed font-label-sm text-label-sm uppercase">Our target</span>
+                      </div>
+                    </th>
+                    <th class="p-space-md font-headline-sm text-headline-sm text-on-surface w-1/6">Sentry SaaS</th>
+                    <th class="p-space-md font-headline-sm text-headline-sm text-on-surface w-1/6">Sentry self-hosted</th>
+                    <th class="p-space-md font-headline-sm text-headline-sm text-on-surface w-1/6">SigNoz</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-surface-container-highest font-body-md text-body-md text-on-surface">
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">Browser SDK size, gzip</td>
+                    <td class="p-space-md bg-primary-container/20 font-code-md text-code-md font-bold text-on-surface">1.5–3 kB</td>
+                    <td class="p-space-md font-code-md text-code-md text-secondary">25–90 kB</td>
+                    <td class="p-space-md font-code-md text-code-md text-secondary">25–90 kB</td>
+                    <td class="p-space-md font-code-md text-code-md text-secondary">~40 kB</td>
+                  </tr>
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">Runtime dependencies</td>
+                    <td class="p-space-md bg-primary-container/20 font-code-md text-code-md font-bold text-on-surface">0</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">many</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">many</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">many</td>
+                  </tr>
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">Reports SIGKILL / kernel OOM</td>
+                    <td class="p-space-md bg-primary-container/20"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-lowest text-[#5B8C1E] shadow-sm">yes</span></td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-high text-secondary">no</span></td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-high text-secondary">no</span></td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-high text-secondary">no</span></td>
+                  </tr>
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">Reports a blocked event loop</td>
+                    <td class="p-space-md bg-primary-container/20"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-lowest text-[#5B8C1E] shadow-sm">yes</span></td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-high text-[#C26B00]">partial</span></td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-high text-[#C26B00]">partial</span></td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-high text-secondary">no</span></td>
+                  </tr>
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">Reports a failed start</td>
+                    <td class="p-space-md bg-primary-container/20"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-lowest text-[#5B8C1E] shadow-sm">yes</span></td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-high text-secondary">no</span></td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-high text-secondary">no</span></td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-high text-secondary">no</span></td>
+                  </tr>
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">Monkey-patching on import</td>
+                    <td class="p-space-md bg-primary-container/20 font-body-md text-body-md text-on-surface">no, opt-in only</td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-lowest text-[#5B8C1E] shadow-sm">yes</span></td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-lowest text-[#5B8C1E] shadow-sm">yes</span></td>
+                    <td class="p-space-md"><span class="inline-flex items-center px-2 py-0.5 font-label-sm text-label-sm uppercase bg-surface-container-lowest text-[#5B8C1E] shadow-sm">yes</span></td>
+                  </tr>
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">Self-host footprint</td>
+                    <td class="p-space-md bg-primary-container/20 font-code-md text-code-md font-bold text-on-surface">Node + Postgres</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">~10 services</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">~10 services</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">ClickHouse + 4 containers</td>
+                  </tr>
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">Time to self-host</td>
+                    <td class="p-space-md bg-primary-container/20 font-body-md text-body-md font-bold text-on-surface">5 minutes</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">n/a</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">a day</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">an hour</td>
+                  </tr>
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">Cost of self-hosting</td>
+                    <td class="p-space-md bg-primary-container/20 font-body-md text-body-md font-bold text-on-surface">free</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">n/a</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">free</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">free</td>
+                  </tr>
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">Cost of the hosted product</td>
+                    <td class="p-space-md bg-primary-container/20 font-body-md text-body-md text-secondary">n/a today</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">per event</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">n/a</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">per event</td>
+                  </tr>
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">License</td>
+                    <td class="p-space-md bg-primary-container/20 font-code-md text-code-md font-bold text-on-surface">AGPL-3.0</td>
+                    <td class="p-space-md font-code-md text-code-md text-secondary">BSL / FSL</td>
+                    <td class="p-space-md font-code-md text-code-md text-secondary">BSL / FSL</td>
+                    <td class="p-space-md font-code-md text-code-md text-secondary">Apache-2.0</td>
+                  </tr>
+                  <tr class="hover:bg-primary-container/5 transition-colors">
+                    <td class="p-space-md font-headline-sm text-headline-sm text-on-surface">Maturity</td>
+                    <td class="p-space-md bg-primary-container/20 font-body-md text-body-md text-on-surface italic">alpha, one author</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">a decade, a team</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">a decade, a team</td>
+                    <td class="p-space-md font-body-md text-body-md text-secondary">mature, a team</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- SECTION 3: PRICING -->
+          <section class="flex flex-col gap-space-lg">
+            <div class="flex flex-col gap-space-xs">
+              <h2 class="font-headline-lg text-headline-lg text-on-surface">What it costs.</h2>
+              <div class="h-0.5 w-12 bg-primary-container"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg w-full">
+              <div class="bg-primary-container/15 p-space-xl flex flex-col justify-between shadow-sm">
+                <div class="flex flex-col gap-space-md">
+                  <div class="flex items-center justify-between">
+                    <h3 class="font-headline-md text-headline-md text-on-surface">Self-hosted</h3>
+                    <span class="px-space-sm py-0.5 bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm uppercase">Standard distribution</span>
+                  </div>
+                  <div class="font-headline-xl text-[40px] leading-tight text-on-surface">Free</div>
+                  <p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                    Forever, for any use, commercial included, as long as you comply with the AGPL. No event caps, no seat counts, no telemetry back to us.
+                  </p>
+                </div>
+                <div class="pt-space-xl">
+                  <a class="w-full py-2.5 px-space-md bg-inverse-surface text-inverse-on-surface font-headline-sm text-headline-sm hover:bg-secondary transition-colors flex items-center justify-center" href="/docs">
+                    Read the quickstart
+                  </a>
+                </div>
+              </div>
+              <div class="bg-surface-container-lowest p-space-xl flex flex-col justify-between shadow-sm">
+                <div class="flex flex-col gap-space-md">
+                  <div class="flex items-center justify-between">
+                    <h3 class="font-headline-md text-headline-md text-on-surface">Commercial license</h3>
+                    <span class="px-space-sm py-0.5 bg-surface-container-highest text-secondary font-label-sm text-label-sm uppercase">Proprietary bypass</span>
+                  </div>
+                  <div class="font-headline-xl text-[40px] leading-tight text-on-surface">Negotiated</div>
+                  <p class="font-body-md text-body-md text-secondary leading-relaxed">
+                    For companies that cannot ship their modifications or cannot offer an AGPL service. Dual licensing, one copyright holder, a CLA from every contributor. Not a product yet; talk to us.
+                  </p>
+                </div>
+                <div class="pt-space-xl">
+                  <button class="w-full py-2.5 px-space-md bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm hover:bg-surface-container-high transition-colors" type="button">
+                    Get in touch
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 4: WHAT THE AGPL ACTUALLY MEANS -->
+          <section class="flex flex-col gap-space-md">
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">What the AGPL actually means</h2>
+            <div class="bg-surface-container-lowest shadow-sm overflow-hidden">
+              <div class="divide-y divide-surface-container-highest font-body-md text-body-md">
+                <div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors">
+                  <span class="font-headline-sm text-headline-sm text-on-surface">Use it, self-host it, modify it for yourself</span>
+                  <span class="font-body-md text-body-md text-secondary md:text-right">Free, no conditions</span>
+                </div>
+                <div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors">
+                  <span class="font-headline-sm text-headline-sm text-on-surface">Publish a modified version</span>
+                  <span class="font-body-md text-body-md text-secondary md:text-right">Publish the source of your changes</span>
+                </div>
+                <div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors">
+                  <span class="font-headline-sm text-headline-sm text-on-surface">Offer it as a service to third parties</span>
+                  <span class="font-body-md text-body-md text-secondary md:text-right">Publish the source, even with no distribution</span>
+                </div>
+                <div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container-low transition-colors">
+                  <span class="font-headline-sm text-headline-sm text-on-surface">Pay royalties</span>
+                  <span class="font-body-md text-body-md text-secondary md:text-right">No. The AGPL has no such thing</span>
+                </div>
+              </div>
+            </div>
+            <p class="font-code-md text-code-md text-secondary leading-relaxed pt-space-xs">
+              AGPL-3.0-only, the FSF text, unmodified. We used to have a custom license with royalty clauses. We dropped it: a license nobody has seen has to go through a legal department, and that kills adoption before the software gets to prove anything.
+            </p>
+          </section>
+
+          <!-- SECTION 5: 仕様 · SPECIFICATION -->
+          <section class="flex flex-col gap-space-md">
+            <div class="flex items-center gap-space-sm">
+              <span class="font-label-lg text-label-lg text-tertiary tracking-widest uppercase">仕様 · SPECIFICATION</span>
+              <div class="h-px flex-1 bg-surface-container-highest"></div>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface max-w-4xl leading-relaxed">
+              The wire protocol is versioned, specified outside the JavaScript SDK, and shipped with a conformance suite in plain JSON. The ports to Python, Go, Rust and the JVM implement the spec; they do not translate the JavaScript.
+            </p>
+            <div class="bg-surface-container-lowest p-space-xl flex flex-col items-center justify-center shadow-sm relative overflow-hidden">
+              <div class="w-full max-w-2xl flex flex-col items-center gap-8">
+                <div class="px-8 py-3 bg-[#187384] text-surface-container-lowest font-headline-md text-headline-md tracking-wider flex items-center gap-space-sm">
+                  <span class="font-label-sm text-label-sm opacity-75">SPEC //</span>
+                  <span>MoeLog.spec</span>
+                  <span class="font-label-sm text-label-sm bg-surface-container-lowest text-[#187384] px-1.5 py-0.5 ml-2">v1.0</span>
+                </div>
+                <svg class="w-full h-12 text-outline-variant stroke-current" fill="none" preserveAspectRatio="none" viewBox="0 0 600 48">
+                  <path d="M 300 0 L 300 16 M 300 16 L 50 48 M 300 16 L 150 48 M 300 16 L 250 48 M 300 16 L 350 48 M 300 16 L 450 48 M 300 16 L 550 48" stroke-dasharray="4 4" stroke-width="1.5"></path>
+                </svg>
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-3 w-full">
+                  <div class="bg-surface-container-low p-2 text-center font-code-md text-code-md text-on-surface hover:bg-primary-container transition-colors cursor-default">[ .js ]</div>
+                  <div class="bg-surface-container-low p-2 text-center font-code-md text-code-md text-on-surface hover:bg-primary-container transition-colors cursor-default">[ .py ]</div>
+                  <div class="bg-surface-container-low p-2 text-center font-code-md text-code-md text-on-surface hover:bg-primary-container transition-colors cursor-default">[ .go ]</div>
+                  <div class="bg-surface-container-low p-2 text-center font-code-md text-code-md text-on-surface hover:bg-primary-container transition-colors cursor-default">[ .rs ]</div>
+                  <div class="bg-surface-container-low p-2 text-center font-code-md text-code-md text-on-surface hover:bg-primary-container transition-colors cursor-default">[ .java ]</div>
+                  <div class="bg-inverse-surface p-2 text-center font-code-md text-code-md text-inverse-on-surface cursor-default">[ Ingest API ]</div>
+                </div>
+              </div>
+              <div class="w-full flex items-center justify-between pt-8 text-secondary font-label-sm text-label-sm">
+                <span>SUITE: JSON-TEST-RUNNER</span>
+                <span>FORMAT: MLWP / UNIFIED-WIRE-V1</span>
+                <span>VERIFIED: STRICT DETERMINISTIC</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 6: FINAL CTA BAND -->
+          <section class="bg-primary-container text-on-primary-fixed p-space-xl flex flex-col md:flex-row items-center justify-between gap-space-lg relative overflow-hidden shadow-sm">
+            <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-10" xmlns="http://www.w3.org/2000/svg">
+              <line stroke="#2D2A29" stroke-width="1" x1="0" x2="100%" y1="12" y2="12"></line>
+              <line stroke="#2D2A29" stroke-width="1" x1="0" x2="100%" y1="28" y2="28"></line>
+              <line stroke="#2D2A29" stroke-width="1" x1="0" x2="100%" y1="44" y2="44"></line>
+              <line stroke="#2D2A29" stroke-width="1" x1="0" x2="100%" y1="60" y2="60"></line>
+              <line stroke="#2D2A29" stroke-width="1" x1="0" x2="100%" y1="76" y2="76"></line>
+              <line stroke="#2D2A29" stroke-width="1" x1="0" x2="100%" y1="92" y2="92"></line>
+              <line stroke="#2D2A29" stroke-width="1" x1="0" x2="100%" y1="108" y2="108"></line>
+            </svg>
+            <div class="relative z-10 max-w-2xl flex flex-col gap-space-xs">
+              <h2 class="font-headline-xl text-headline-xl md:text-[40px] leading-tight text-on-primary-fixed">Five minutes from npm i to a dashboard you own.</h2>
+              <span class="font-code-md text-code-md opacity-80 uppercase tracking-widest">Minimal dependencies. Instant run. Local control.</span>
+            </div>
+            <div class="relative z-10 flex flex-col sm:flex-row gap-space-md shrink-0">
+              <a class="px-space-lg py-3 bg-inverse-surface text-inverse-on-surface font-headline-sm text-headline-sm hover:bg-secondary transition-colors flex items-center justify-center" href="/docs">Read the quickstart</a>
+              <a class="px-space-lg py-3 bg-transparent text-on-primary-fixed font-headline-sm text-headline-sm hover:bg-primary-fixed-dim transition-colors flex items-center justify-center" href="https://github.com/Moe-Corp" rel="noopener noreferrer" target="_blank">Star it on GitHub</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <Footer />
+  </main>
+</Layout>
