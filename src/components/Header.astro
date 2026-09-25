@@ -22,12 +22,12 @@ const inactiveClasses =
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 w-full bg-surface-container-lowest border-b border-surface-container-highest">
-  <div class="h-16 w-full px-6 flex items-center justify-between">
-    <div class="flex items-center gap-space-sm">
-      <img alt="Moe Corp Logo Mark" class="h-8 w-auto object-contain" src={isotipo.src} width={isotipo.width} height={isotipo.height} />
-      <span class="font-headline-md text-headline-md tracking-tight text-on-surface">MoeLog</span>
-      <div class="h-4 w-px bg-surface-container-highest"></div>
-      <span class="font-label-md text-label-md text-secondary uppercase">by Moe Corp</span>
+  <div class="h-16 w-full px-4 md:px-6 flex items-center justify-between gap-2">
+    <div class="flex items-center gap-space-sm min-w-0">
+      <img alt="Moe Corp Logo Mark" class="h-8 w-auto object-contain shrink-0" src={isotipo.src} width={isotipo.width} height={isotipo.height} />
+      <span class="font-headline-md text-headline-md tracking-tight text-on-surface truncate">MoeLog</span>
+      <div class="hidden sm:block h-4 w-px bg-surface-container-highest shrink-0"></div>
+      <span class="hidden sm:inline font-label-md text-label-md text-secondary uppercase whitespace-nowrap">by Moe Corp</span>
     </div>
     <nav class="hidden md:flex items-center h-16 gap-8">
       {navLinks.map((link) => (
@@ -40,25 +40,49 @@ const inactiveClasses =
         </a>
       ))}
     </nav>
-    <div class="flex items-center gap-space-md">
-      <button id="theme-toggle" aria-label="Toggle System Theme" class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+    <div class="flex items-center gap-space-sm md:gap-space-md shrink-0">
+      <button id="theme-toggle" aria-label="Toggle System Theme" class="hidden sm:flex w-8 h-8 items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button">
         <span class="material-symbols-outlined text-[20px]">contrast</span>
       </button>
-      <a class="flex items-center gap-space-xs px-space-sm py-1 border border-surface-container-highest rounded-lg font-code-md text-code-md text-on-surface hover:bg-surface-container transition-colors" href="#">
+      <a class="hidden sm:flex items-center gap-space-xs px-space-sm py-1 border border-surface-container-highest rounded-lg font-code-md text-code-md text-on-surface hover:bg-surface-container transition-colors" href="#">
         <span class="material-symbols-outlined text-[16px]">star</span>
         <span>★ 0</span>
       </a>
-      <a class="px-space-md py-1.5 bg-primary-container text-on-primary-fixed font-headline-sm text-headline-sm rounded-lg border border-on-surface hover:bg-primary-fixed-dim transition-transform active:translate-x-px active:translate-y-px" href="/docs">
+      <a class="px-space-sm md:px-space-md py-1.5 bg-primary-container text-on-primary-fixed font-headline-sm text-headline-sm rounded-lg border border-on-surface hover:bg-primary-fixed-dim transition-transform active:translate-x-px active:translate-y-px whitespace-nowrap" href="/docs">
         Quickstart
       </a>
-      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+      <div class="hidden sm:flex w-8 h-8 rounded-full bg-primary items-center justify-center shrink-0">
         <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
       </div>
+      <button id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-8 h-8 flex items-center justify-center text-on-surface shrink-0" type="button">
+        <span class="material-symbols-outlined text-[22px]">menu</span>
+      </button>
     </div>
   </div>
-  <div class="h-8 w-full bg-inverse-surface flex items-center justify-center px-4">
-    <p class="font-code-md text-code-md text-inverse-on-surface text-center tracking-tight">v0.0.2-alpha — MLWP v1 is not frozen yet. Run it on your own things first.</p>
+  <div class="h-8 w-full bg-inverse-surface flex items-center justify-center px-4 overflow-hidden">
+    <p class="font-code-md text-code-md text-inverse-on-surface text-center tracking-tight truncate">v0.0.2-alpha — MLWP v1 is not frozen yet. Run it on your own things first.</p>
   </div>
+  <nav id="mobile-menu" class="hidden flex-col bg-surface-container-lowest border-b border-surface-container-highest md:!hidden">
+    {navLinks.map((link) => (
+      <a
+        class={`px-4 py-3 font-label-md text-label-md border-b border-surface-container-high last:border-b-0 ${link.key === currentPath ? "text-on-surface font-bold bg-surface-container" : "text-on-surface-variant"}`}
+        href={link.href}
+        aria-current={link.key === currentPath ? "page" : undefined}
+      >
+        {link.label}
+      </a>
+    ))}
+    <div class="flex items-center justify-between px-4 py-3">
+      <button id="theme-toggle-mobile" aria-label="Toggle System Theme" class="flex items-center gap-2 text-on-surface-variant" type="button">
+        <span class="material-symbols-outlined text-[20px]">contrast</span>
+        <span class="font-label-md text-label-md">Theme</span>
+      </button>
+      <a class="flex items-center gap-space-xs px-space-sm py-1 border border-surface-container-highest rounded-lg font-code-md text-code-md text-on-surface" href="#">
+        <span class="material-symbols-outlined text-[16px]">star</span>
+        <span>★ 0</span>
+      </a>
+    </div>
+  </nav>
 </header>
 
 <script is:inline>
@@ -69,12 +93,22 @@ const inactiveClasses =
     const isDark = stored ? stored === "dark" : prefersDark;
     root.classList.toggle("dark", isDark);
 
-    const toggleBtn = document.getElementById("theme-toggle");
-    if (toggleBtn) {
-      toggleBtn.addEventListener("click", () => {
-        const next = !root.classList.contains("dark");
-        root.classList.toggle("dark", next);
-        localStorage.setItem("moelog-theme", next ? "dark" : "light");
+    function toggleTheme() {
+      const next = !root.classList.contains("dark");
+      root.classList.toggle("dark", next);
+      localStorage.setItem("moelog-theme", next ? "dark" : "light");
+    }
+
+    document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
+    document.getElementById("theme-toggle-mobile")?.addEventListener("click", toggleTheme);
+
+    const menuToggle = document.getElementById("mobile-menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+    if (menuToggle && menu) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menu.classList.toggle("flex");
+        menu.classList.toggle("hidden", !isOpen);
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
       });
     }
   })();
